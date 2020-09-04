@@ -5,7 +5,7 @@
 #define ARR_LOC(arr, ind, ele_size) (arr + (ind * ele_size))
 
 void
-print_array (float *arr, int size)
+print_array (int *arr, int size)
 {
 
   int i = 0;
@@ -15,26 +15,34 @@ print_array (float *arr, int size)
 
   for(i = 0; i < size; i++) {
   
-    printf("%f ", arr[i]);
+    printf("%d ", arr[i]);
   }
   printf("\n");
 
   return;
 }
-/*
+
 int
 merge_cmp (const void *p1, const void *p2, size_t ele_size,
            int (*cmp)(const void *, const void *))
 {
 
+  int ret = 0;
+
   if(!cmp) {
-  
-    return memcmp(p1, p2, ele_size);
+ 
+    ret =  memcmp(p1, p2, ele_size);
+    //printf("p1: %f, p2: %f, ret: %d\n", *(float *)p1, *(float *)p2, ret);
+    
+    return ret;
   }
 
-  return (cmp(p1, p2));
+  ret = (cmp(p1, p2));
+  //printf("p1: %f, p2: %f, ret: %d\n", *(float *)p1, *(float *)p2, ret);
+
+  return ret;
 }
-*/
+
 void
 merge (void *arr, size_t ele_size, size_t low, size_t mid, size_t high, 
        int (*cmp)(const void *, const void *))
@@ -64,31 +72,15 @@ merge (void *arr, size_t ele_size, size_t low, size_t mid, size_t high,
     return;
   }
 
-  /*
-  for(i = 0; i < n1; i++) {
-  
-    L[i] = arr[low + i];
-  }
-  for(j = 0; j < n2; j++) {
-  
-    R[j] = arr[mid + 1 + j];
-  }
-  */
-
   memcpy(L, ARR_LOC(arr, low, ele_size), (n1 * ele_size));
   memcpy(R, ARR_LOC(arr, (mid + 1), ele_size), (n2 * ele_size));
-
-  /*
-  print_array(L, n1);
-  print_array(R, n2);
-  */
 
   i = 0;
   j = 0;
   k = low;
   while((i < n1) && (j < n2)) {
   
-    if((*cmp) ((void *)ARR_LOC(L, i, ele_size), (void *)ARR_LOC(R, j, ele_size)) < 0) {
+    if( merge_cmp((void *)ARR_LOC(L, i, ele_size), (void *)ARR_LOC(R, j, ele_size), ele_size, cmp) < 0) {
     
       memcpy(ARR_LOC(arr, k, ele_size), ARR_LOC(L, i, ele_size), ele_size);
       i++;
@@ -113,7 +105,16 @@ merge (void *arr, size_t ele_size, size_t low, size_t mid, size_t high,
     j++;
     k++;
   }
-  
+ 
+  if(L) {
+
+    free(L);
+  }
+  if(R) {
+
+    free(R);
+  }
+
   return;
 }
 
@@ -165,20 +166,18 @@ int
 main ()
 {
 
-  float arr[] = {2, 0, 4, 6, 8, 1, 5, 3, 9, 7};
+  int arr[] = {2, 0, 4, 6, 8, 1, 5, 3, 9, 7};
   int size = 0;
 
   size = sizeof(arr) / sizeof(int);
 
   printf("Original array: ");
   print_array(arr, size);
-  printf("\n");
 
   merge_sort(arr, size, sizeof(int), cmp);
 
   printf("Sorted   array: ");
   print_array(arr, size);
-  printf("\n");
 
   return 0;
 }
