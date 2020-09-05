@@ -6,7 +6,9 @@
 
 #include "merge_sort.h"
 
-#define ONE_MB_BYTE  1000000
+#define ONE_KB_BYTE   1000
+#define ONE_MB_BYTE   1000000
+#define ONE_TWO_EIGHT_MB_BYTE   128000000
 
 /************************
       INTEGERS_START
@@ -1390,10 +1392,70 @@ test2 ()
 }
 
 /*
- * Test for 1MB of integer array
+ * Test for 1KB of integer array
  */
 void
 test3 ()
+{
+
+  int arr[(ONE_KB_BYTE / sizeof(int))];
+  size_t size = 0;
+  size_t i = 0;
+  
+  for(i = 0; i < (ONE_KB_BYTE / sizeof(int)); i++) {
+  
+    arr[i] = (rand() % INT_MAX);
+  }
+
+  size = sizeof(arr) / sizeof(int);
+  printf("Test for 1KB of integer array: \n");
+  printf("Original array: ");
+  print_int_array(arr, size);
+
+  merge_sort(arr, size, sizeof(int), int_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_int_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+/*
+ * Test for 1KB of float array
+ */
+void
+test4 ()
+{
+
+  float arr[(ONE_KB_BYTE / sizeof(float))];
+  size_t size = 0;
+  size_t i = 0;
+  
+  for(i = 0; i < (ONE_KB_BYTE / sizeof(float)); i++) {
+  
+    arr[i] = (rand() % LONG_MAX);
+  }
+
+  size = sizeof(arr) / sizeof(float);
+  printf("Test for 1KB of float array: \n");
+  printf("Original array: ");
+  print_float_array(arr, size);
+
+  merge_sort(arr, size, sizeof(float), float_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_float_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+/*
+ * Test for 1MB of integer array
+ */
+void
+test5 ()
 {
 
   int arr[(ONE_MB_BYTE / sizeof(int))];
@@ -1423,7 +1485,7 @@ test3 ()
  * Test for 1MB of float array
  */
 void
-test4 ()
+test6 ()
 {
 
   float arr[(ONE_MB_BYTE / sizeof(float))];
@@ -1449,10 +1511,76 @@ test4 ()
   return;
 }
 
+/*
+ * Test for 128MB of integer array
+ */
+void
+test7 ()
+{
+
+  int *arr;
+  size_t size = 0;
+  size_t i = 0;
+ 
+  size = ONE_TWO_EIGHT_MB_BYTE / sizeof(int);
+
+  arr = malloc(size * sizeof(int));
+  
+  for(i = 0; i < size; i++) {
+  
+    arr[i] = (rand() % INT_MAX);
+  }
+
+  printf("Test for 128MB of integer array: \n");
+  printf("Original array: ");
+  print_int_array(arr, size);
+
+  merge_sort(arr, size, sizeof(int), int_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_int_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+/*
+ * Test for 128MB of float array
+ */
+void
+test8 ()
+{
+
+  float *arr;
+  size_t size = 0;
+  size_t i = 0;
+
+  size = ONE_TWO_EIGHT_MB_BYTE / sizeof(float);
+
+  printf("size: %ld\n", size);
+  arr = malloc(size * sizeof(float));
+
+  for(i = 0; i < size; i++) {
+  
+    arr[i] = (rand() % LONG_MAX);
+  }
+
+  printf("Test for 128MB of float array: \n");
+  printf("Original array: ");
+  //print_float_array(arr, size);
+
+  merge_sort(arr, size, sizeof(float), float_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_float_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
 /************************
       GENERAL_END
  ************************/
-
 
 int
 main ()
@@ -1505,6 +1633,10 @@ main ()
   //test2();
   //test3();
   //test4();
+  //test5();
+  //test6();
+  //test7();
+  //test8();
 
   return 0;
 }
