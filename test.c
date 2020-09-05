@@ -5,16 +5,17 @@
 #include "merge_sort.h"
 
 /************************
- *****INTEGERS_START*****
+      INTEGERS_START
  ************************/
 
-/* Print integer array
+/* 
+ * Function to print integer array
  */
 void
-print_int_array (int *arr, int size)
+print_int_array (int *arr, size_t size)
 {
 
-  int i = 0;
+  size_t i = 0;
 
   if(!arr)
     return;
@@ -32,166 +33,457 @@ print_int_array (int *arr, int size)
  * compare function to sort integer 
  * array in ascending order
  */
-int
+cmp_e
 int_cmp_ascending (const void *p1, const void *p2)
 {
 
-  return (*(int *)p1 - *(int *)p2);
+  if((*(int *)p1 - *(int *)p2) < 0) {
+  
+    return MERGESORT_LT; 
+  } else if((*(int *)p1 - *(int *)p2) > 0) {
+  
+    return MERGESORT_GT;
+  } else {
+  
+    return MERGESORT_EQ;
+  }
 }
 
-int
+/*
+ * compare function to sort integer
+ * array in descending order
+ */
+cmp_e
 int_cmp_descending (const void *p1, const void *p2)
 {
 
-  return (*(int *)p2 - *(int *)p1);
+  if((*(int *)p2 - *(int *)p1) < 0) {
+  
+    return MERGESORT_LT; 
+  } else if((*(int *)p2 - *(int *)p1) > 0) {
+  
+    return MERGESORT_GT;
+  } else {
+  
+    return MERGESORT_EQ;
+  }
+}
+
+/*
+ * Test for sorting positive integer array 
+ * in asceding order
+ */
+void
+int_test_1 ()
+{
+
+  int arr[] = {2,0,4,6,8,1,5,3,9,7};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(int);
+
+  printf("Test for sorting positive integer"
+         " array in ascending order\n");
+  printf("Original array: ");
+  print_int_array(arr, size);
+
+  merge_sort(arr, size, sizeof(int), int_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_int_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+/*
+ * Test for sorting positive integer array 
+ * in descending order
+ */
+void
+int_test_2 ()
+{
+
+  int arr[] = {2,0,4,6,8,1,5,3,9,7};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(int);
+
+  printf("Test for sorting positive integer"
+         " array in descending order\n");
+  printf("Original array: ");
+  print_int_array(arr, size);
+
+  merge_sort(arr, size, sizeof(int), int_cmp_descending);
+
+  printf("Sorted   array: ");
+  print_int_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+/*
+ * Test for sorting negative integer array 
+ * in ascendig order
+ */
+void
+int_test_3 ()
+{
+
+  int arr[] = {-2,-0,-4,-6,-8,-1,-5,-3,-9,-7};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(int);
+
+  printf("Test for sorting negative integer"
+         " array in ascending order\n");
+  printf("Original array: ");
+  print_int_array(arr, size);
+
+  merge_sort(arr, size, sizeof(int), int_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_int_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+/*
+ * Test for sorting negative integer array 
+ * in descending order
+ */
+void
+int_test_4 ()
+{
+
+  int arr[] = {-2,0,-4,-6,-8,-1,-5,-3,-9,-7};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(int);
+
+  printf("Test for sorting negative integer"
+         " array in descending order\n");
+  printf("Original array: ");
+  print_int_array(arr, size);
+
+  merge_sort(arr, size, sizeof(int), int_cmp_descending);
+
+  printf("Sorted   array: ");
+  print_int_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+/*
+ * Test for sorting integer array 
+ * in ascending order
+ */
+void
+int_test_5 ()
+{
+
+  int arr[] = {-2,0,4,6,-8,-1,5,-3,-9,-7,12,3,-2,4};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(int);
+
+  printf("Test for sorting integer"
+         " array in ascending order\n");
+  printf("Original array: ");
+  print_int_array(arr, size);
+
+  merge_sort(arr, size, sizeof(int), int_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_int_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+/*
+ * Test for sorting integer array 
+ * in descending order
+ */
+void
+int_test_6 ()
+{
+
+  int arr[] = {-2,0,4,6,-8,-1,5,-3,-9,-7,12,3,-2,4};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(int);
+
+  printf("Test for sorting integer"
+          " array in descending order\n");
+  printf("Original array: ");
+  print_int_array(arr, size);
+
+  merge_sort(arr, size, sizeof(int), int_cmp_descending);
+
+  printf("Sorted   array: ");
+  print_int_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+
+/************************
+      INTEGERS_END
+************************/
+
+/************************
+      FLOAT_START
+ ************************/
+
+/* 
+ * Function to print float array
+ */
+void
+print_float_array (float *arr, size_t size)
+{
+
+  size_t i = 0;
+
+  if(!arr)
+    return;
+
+  for(i = 0; i < size; i++) {
+  
+    printf("%.2f ", arr[i]);
+  }
+  printf("\n");
+
+  return;
+}
+
+/*
+ * compare function to sort float 
+ * array in ascending order
+ */
+cmp_e
+float_cmp_ascending (const void *p1, const void *p2)
+{
+
+  if((*(float *)p1 - *(float *)p2) < 0) {
+  
+    return MERGESORT_LT;
+  }else if((*(float *)p1 - *(float *)p2) > 0) {
+  
+    return MERGESORT_GT;
+  } else {
+  
+    return MERGESORT_EQ;
+  }
+}
+
+/*
+ * compare function to sort float 
+ * array in descending order
+ */
+int
+float_cmp_descending (const void *p1, const void *p2)
+{
+
+  if((*(float *)p2 - *(float *)p1) < 0) {
+  
+    return MERGESORT_LT;
+  }else if((*(float *)p2 - *(float *)p1) > 0) {
+  
+    return MERGESORT_GT;
+  } else {
+  
+    return MERGESORT_EQ;
+  }
+}
+
+void
+float_test_1 ()
+{
+
+  /*
+   * Test for sorting positive float array
+   * in ascending order
+   */
+  float arr[] = {2,2.5,1,3,7,9,100,2.1,34,5,2.7,4.3};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(float);
+
+  printf("Test for sorting positive float"
+         " array in ascending order\n");
+  printf("Origianl array: ");
+  print_float_array(arr, size);
+
+  merge_sort(arr, size, sizeof(float), float_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_float_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+void
+float_test_2 ()
+{
+
+  /*
+   * Test for sorting positive float array
+   * in descending order
+   */
+  float arr[] = {2,2.5,1,3,7,9,100,2.1,34,5,2.7,4.3};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(float);
+
+  printf("Test for sorting positive float"
+         " array in descending order\n");
+  printf("Origianl array: ");
+  print_float_array(arr, size);
+
+  merge_sort(arr, size, sizeof(float), float_cmp_descending);
+
+  printf("Sorted   array: ");
+  print_float_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+void
+float_test_3 ()
+{
+
+  /*
+   * Test for sorting negative float array
+   * in ascending order
+   */
+  float arr[] = {-2,-2.5,-1,-3,-7,-9,-100,-2.1,-34,-5,-2.7,-4.3};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(float);
+
+  printf("Test for sorting positive float"
+         " array in ascending order\n");
+  printf("Origianl array: ");
+  print_float_array(arr, size);
+
+  merge_sort(arr, size, sizeof(float), float_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_float_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+void
+float_test_4 ()
+{
+
+  /*
+   * Test for sorting negative float array
+   * in descending order
+   */
+  float arr[] = {-2,-2.5,-1,-3,-7,-9,-100,-2.1,-34,-5,-2.7,-4.3};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(float);
+
+  printf("Test for sorting positive float"
+         " array in descending order\n");
+  printf("Origianl array: ");
+  print_float_array(arr, size);
+
+  merge_sort(arr, size, sizeof(float), float_cmp_descending);
+
+  printf("Sorted   array: ");
+  print_float_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+void
+float_test_5 ()
+{
+
+  /*
+   * Test for sorting float array
+   * in ascending order
+   */
+  float arr[] = {-2,2.5,1,-3,-7,9,-100,2.1,-34,5,2.7,-4.3};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(float);
+
+  printf("Test for sorting positive float"
+         " array in ascending order\n");
+  printf("Origianl array: ");
+  print_float_array(arr, size);
+
+  merge_sort(arr, size, sizeof(float), float_cmp_ascending);
+
+  printf("Sorted   array: ");
+  print_float_array(arr, size);
+  printf("\n");
+
+  return;
+}
+
+void
+float_test_6 ()
+{
+
+  /*
+   * Test for sorting float array
+   * in descending order
+   */
+  float arr[] = {-2,2.5,1,-3,-7,9,-100,2.1,-34,5,2.7,-4.3};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(float);
+
+  printf("Test for sorting positive float"
+         " array in descending order\n");
+  printf("Origianl array: ");
+  print_float_array(arr, size);
+
+  merge_sort(arr, size, sizeof(float), float_cmp_descending);
+
+  printf("Sorted   array: ");
+  print_float_array(arr, size);
+  printf("\n");
+
+  return;
 }
 
 /************************
- ******INTEGERS_END******
+       FLOAT_END
  ************************/
 
 int
 main ()
 {
 
-  /*
-   * Test for sorting positive integer array 
-   * in asceding order
-   */
-  int arr1[] = {2,0,4,6,8,1,5,3,9,7};
-  size_t size1 = 0;
+  int_test_1();
+  int_test_2();
+  int_test_3();
+  int_test_4();
+  int_test_5();
+  int_test_6();
 
-  size1 = sizeof(arr1) / sizeof(int);
-
-  printf("Test for sorting positive integer \
-          array in ascending order\n");
-  printf("Original array: ");
-  print_int_array(arr1, size1);
-
-  merge_sort(arr1, size1, sizeof(int), int_cmp_ascending);
-
-  printf("Sorted   array: ");
-  print_int_array(arr1, size1);
-  printf("\n");
-
-  /*
-   * Test for sorting positive integer array 
-   * in descending order
-   */
-  int arr2[] = {2,0,4,6,8,1,5,3,9,7};
-  size_t size2 = 0;
-
-  size2 = sizeof(arr2) / sizeof(int);
-
-  printf("Test for sorting positive integer \
-          array in descending order\n");
-  printf("Original array: ");
-  print_int_array(arr2, size2);
-
-  merge_sort(arr2, size2, sizeof(int), int_cmp_descending);
-
-  printf("Sorted   array: ");
-  print_int_array(arr2, size2);
-  printf("\n");
-
-  /*
-   * Test for sorting negative integer array 
-   * in ascendig order
-   */
-  int arr3[] = {-2,-0,-4,-6,-8,-1,-5,-3,-9,-7};
-  size_t size3 = 0;
-
-  size3 = sizeof(arr3) / sizeof(int);
-
-  printf("Test for sorting negative integer \
-          array in ascending order\n");
-  printf("Original array: ");
-  print_int_array(arr3, size3);
-
-  merge_sort(arr3, size3, sizeof(int), int_cmp_ascending);
-
-  printf("Sorted   array: ");
-  print_int_array(arr3, size3);
-  printf("\n");
-
-  /*
-   * Test for sorting negative integer array 
-   * in descending order
-   */
-  int arr4[] = {-2,0,-4,-6,-8,-1,-5,-3,-9,-7};
-  size_t size4 = 0;
-
-  size4 = sizeof(arr4) / sizeof(int);
-
-  printf("Test for sorting negative integer \
-          array in descending order\n");
-  printf("Original array: ");
-  print_int_array(arr4, size4);
-
-  merge_sort(arr4, size4, sizeof(int), int_cmp_descending);
-
-  printf("Sorted   array: ");
-  print_int_array(arr4, size4);
-  printf("\n");
-
-  /*
-   * Test for sorting integer array 
-   * in ascending order
-   */
-  int arr5[] = {-2,0,4,6,-8,-1,5,-3,-9,-7,12,3,-2,4};
-  size_t size5 = 0;
-
-  size5 = sizeof(arr5) / sizeof(int);
-
-  printf("Test for sorting integer \
-          array in ascending order\n");
-  printf("Original array: ");
-  print_int_array(arr5, size5);
-
-  merge_sort(arr5, size5, sizeof(int), int_cmp_ascending);
-
-  printf("Sorted   array: ");
-  print_int_array(arr5, size5);
-  printf("\n");
-
-  /*
-   * Test for sorting integer array 
-   * in descending order
-   */
-  int arr6[] = {-2,0,4,6,-8,-1,5,-3,-9,-7,12,3,-2,4};
-  size_t size6 = 0;
-
-  size6 = sizeof(arr6) / sizeof(int);
-
-  printf("Test for sorting negative integer \
-          array in descending order\n");
-  printf("Original array: ");
-  print_int_array(arr6, size6);
-
-  merge_sort(arr6, size6, sizeof(int), int_cmp_descending);
-
-  printf("Sorted   array: ");
-  print_int_array(arr6, size6);
-  printf("\n");
-
-#if 0
-  /*
-   * TEST FOR SORTING POSITIVE FLOAT ARRAY
-   * IN ASCENDING ORDER
-   */
-  float arr2[] = {2,2.5,1,3,7,9,100,2.1,34,5,2.7,4.3};
-  size_t size2 = 0;
-
-  size2 = sizeof(arr2) / sizeof(float);
-
-  printf("Origianl array: ");
-  print_float_array(arr2, size2);
-
-  merge_sort(arr2, size2, sizeof(float), float_cmp);
-
-  printf("Sorted   array: ");
-  print_float_array(arr2, size2);
-#endif
+  float_test_1();
+  float_test_2();
+  float_test_3();
+  float_test_4();
+  float_test_5();
+  float_test_6();
 
   return 0;
 }

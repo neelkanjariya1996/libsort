@@ -6,6 +6,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef enum cmp_e_{
+
+  MERGESORT_LT = -1,
+  MERGESORT_EQ,
+  MERGESORT_GT,
+}cmp_e;
+
 /*
  * merge_sort function used by the user
  *

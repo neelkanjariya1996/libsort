@@ -34,7 +34,7 @@
 static int
 merge_cmp (const void *p1, const void *p2, 
            size_t elem_size,
-           int (*cmp)(const void *, const void *))
+           cmp_e (*cmp)(const void *, const void *))
 {
 
   int ret = 0;
@@ -69,7 +69,7 @@ merge_cmp (const void *p1, const void *p2,
 void
 merge (void *arr, size_t elem_size, size_t low, 
        size_t mid, size_t high, 
-       int (*cmp)(const void *, const void *))
+       cmp_e (*cmp)(const void *, const void *))
 {
 
   size_t n1 = 0;    //size of first subarray
@@ -128,7 +128,7 @@ merge (void *arr, size_t elem_size, size_t low,
      */
     if( merge_cmp((void *)ARR_LOC(L, i, elem_size), 
                   (void *)ARR_LOC(R, j, elem_size), 
-                  elem_size, cmp) < 0) {
+                  elem_size, cmp) == MERGESORT_LT) {
     
       memcpy(ARR_LOC(arr, k, elem_size),
              ARR_LOC(L, i, elem_size), elem_size);
@@ -197,7 +197,7 @@ merge (void *arr, size_t elem_size, size_t low,
 void
 merge_sort_recur (void *arr, size_t elem_size, 
                   size_t low, size_t high,
-                  int (*cmp)(const void *, const void *))
+                  cmp_e (*cmp)(const void *, const void *))
 {
   
   size_t mid = 0;
@@ -238,7 +238,7 @@ merge_sort_recur (void *arr, size_t elem_size,
  */
 void
 merge_sort (void *arr, size_t arr_size,size_t elem_size, 
-            int (*cmp)(const void *, const void *))
+            cmp_e (*cmp)(const void *, const void *))
 {
 
   if(!arr)
