@@ -80,8 +80,10 @@ merge (void *arr, size_t elem_size, size_t low,
   void *L;          //temporary array for first subarray
   void *R;          //temporary array for second subarray
 
-  if(!arr)
+  if(!arr) {
+
     return;
+  }
 
   n1 = mid - low + 1;
   n2 = high - mid;
@@ -202,11 +204,15 @@ merge_sort_recur (void *arr, size_t elem_size,
   
   size_t mid = 0;
 
-  if(!arr)
-    return;
+  if(!arr) {
 
-  if(low >= high)
     return;
+  }
+
+  if(low >= high) {
+
+    return;
+  }
 
   mid = low + ((high - low) / 2);
 
@@ -241,11 +247,23 @@ merge_sort (void *arr, size_t arr_size,size_t elem_size,
             cmp_e (*cmp)(const void *, const void *))
 {
 
-  if(!arr)
-    return;
+  if(!arr) {
 
-  if(arr_size == 0)
+    printf("ARRAY EMPTY\n");
     return;
+  }
+
+  if(arr_size == 0) {
+
+    printf("ARRAY EMPTY\n");
+    return;
+  }
+
+  if(!cmp) {
+  
+    printf("Compared function passed as NULL, "
+           "memcmp() is used for comparison\n");
+  }
 
   merge_sort_recur(arr, elem_size, 0, arr_size - 1, cmp);
 }
