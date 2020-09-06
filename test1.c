@@ -7,9 +7,9 @@
 
 #include "sort.h"
 
-#define _1KB   1000
-#define _1MB   1000000
-#define _128MB   128000000
+#define _1KB      1000
+#define _1MB      1000000
+#define _128MB    128000000
 
 typedef enum sort_type_e_ {
 
@@ -52,7 +52,7 @@ sort (void *arr, size_t arr_size, size_t elem_size,
       merge_sort(arr, arr_size, elem_size, cmp);
       break;
     case HSORT:
-      //call heap sort
+      heap_sort(arr, arr_size, elem_size, cmp);
       break;
     case QSORT:
       //call qsort
@@ -1225,6 +1225,269 @@ point_t_test_8 (sort_type_e type)
        TEST_CASES_FOR_POINTS_END
  ***************************************/
 
+/**************************************
+            GENERAL_TEST
+ *************************************/
+
+/*
+ * Array passed as NULL
+ */
+bool
+test_1 (sort_type_e type)
+{
+
+  int arr[] = {};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(int);
+ 
+  printf("%s: Test for empty array -> ", sort_type2str(type));
+
+  sort(NULL, size, sizeof(int), int_cmp_ascending, type);
+
+  return is_array_sorted(arr, size, sizeof(int), int_cmp_ascending);
+}
+
+/*
+ * Compare function passed as NULL
+ */
+bool
+test_2 (sort_type_e type)
+{
+
+  int arr[] = {20,3,2,3,5,7,4,3,100};
+  size_t size = 0;
+
+  size = sizeof(arr) / sizeof(int);
+
+  printf("%s: Test for compare function passed as NULL -> ", sort_type2str(type));
+
+  sort(arr, size, sizeof(int), NULL, type);
+
+  return is_array_sorted(arr, size, sizeof(int), int_cmp_ascending);
+}
+
+/*
+ * Test for 1KB of integer array
+ */
+bool
+test_3 (sort_type_e type)
+{
+
+  int arr[(_1KB / sizeof(int))];
+  size_t size = 0;
+  size_t i = 0;
+  
+  for(i = 0; i < (_1KB / sizeof(int)); i++) {
+  
+    arr[i] = (rand() % INT_MAX);
+  }
+
+  size = sizeof(arr) / sizeof(int);
+
+  printf("%s: Test for 1KB of integer array -> ", sort_type2str(type));
+
+  sort(arr, size, sizeof(int), int_cmp_ascending, type);
+
+  return is_array_sorted(arr, size, sizeof(int), int_cmp_ascending);
+
+}
+
+/*
+ * Test for 1KB of float array
+ */
+bool
+test_4 (sort_type_e type)
+{
+
+  float arr[(_1KB / sizeof(float))];
+  size_t size = 0;
+  size_t i = 0;
+  
+  for(i = 0; i < (_1KB / sizeof(float)); i++) {
+  
+    arr[i] = (rand() % LONG_MAX);
+  }
+
+  size = sizeof(arr) / sizeof(float);
+
+  printf("%s: Test for 1KB of float array -> ", sort_type2str(type));
+
+  sort(arr, size, sizeof(float), float_cmp_ascending, type);
+
+  return is_array_sorted(arr, size, sizeof(float), float_cmp_ascending);
+}
+
+/*
+ * Test for 1MB of integer array
+ */
+bool
+test_5 (sort_type_e type)
+{
+
+  int *arr;
+  size_t size = 0;
+  size_t i = 0;
+  bool ret = false;
+ 
+  size = (_1MB / sizeof(int));
+
+  arr = malloc(size * sizeof(int));
+  if(!arr) {
+  
+    printf("Malloc Failure\n");
+    return ret;
+  }
+
+  for(i = 0; i < (_1MB / sizeof(int)); i++) {
+  
+    arr[i] = (rand() % INT_MAX);
+  }
+
+  printf("size: %ld\n", size);
+
+  printf("%s: Test for 1MB of integer array -> ", sort_type2str(type));
+
+  sort(arr, size, sizeof(int), int_cmp_ascending, type);
+
+  print_int_array(arr, size);
+
+  ret = is_array_sorted(arr, size, sizeof(int), int_cmp_ascending);
+
+  if(arr) {
+  
+    free(arr);
+  }
+
+  return ret;
+}
+
+/*
+ * Test for 1MB of float array
+ */
+bool
+test_6 (sort_type_e type)
+{
+
+  float *arr;
+  size_t size = 0;
+  size_t i = 0;
+  bool ret = false;
+  
+  size = (_1MB / sizeof(float));
+
+  arr = malloc(size * sizeof(float));
+  if(!arr) {
+  
+    printf("Malloc Failure\n");
+    return ret;
+  }
+
+  for(i = 0; i < (_1MB / sizeof(float)); i++) {
+  
+    arr[i] = (rand() % LONG_MAX);
+  }
+
+  size = sizeof(arr) / sizeof(float);
+
+  printf("%s: Test for 1MB of float array -> ", sort_type2str(type));
+
+  sort(arr, size, sizeof(float), float_cmp_ascending, type);
+
+  ret = is_array_sorted(arr, size, sizeof(float), float_cmp_ascending);
+
+  if(arr) {
+  
+    free(arr);
+  }
+
+  return ret;
+}
+
+/*
+ * Test for 128MB of integer array
+ */
+bool
+test_7 (sort_type_e type)
+{
+
+  int *arr;
+  size_t size = 0;
+  size_t i = 0;
+  bool ret = false;
+ 
+  size = _128MB / sizeof(int);
+
+  arr = malloc(size * sizeof(int));
+  if(!arr) {
+  
+    printf("Malloc Failure\n");
+    return ret;
+  }
+
+  for(i = 0; i < size; i++) {
+  
+    arr[i] = (rand() % INT_MAX);
+  }
+
+  printf("%s: Test for 128MB of integer array -> ", sort_type2str(type));
+
+  sort(arr, size, sizeof(int), int_cmp_ascending, type);
+
+  ret = is_array_sorted(arr, size, sizeof(int), int_cmp_ascending);
+
+  if(arr) {
+  
+    free(arr);
+  }
+
+  return ret;
+}
+
+/*
+ * Test for 128MB of float array
+ */
+bool
+test_8 (sort_type_e type)
+{
+
+  float *arr;
+  size_t size = 0;
+  size_t i = 0;
+  bool ret = false;
+
+  size = _128MB / sizeof(float);
+
+  arr = malloc(size * sizeof(float));
+  if(!arr) {
+  
+    printf("Malloc Failure\n");
+    return ret;
+  }
+
+  for(i = 0; i < size; i++) {
+  
+    arr[i] = (rand() % LONG_MAX);
+  }
+
+  printf("%s: Test for 128MB of float array -> ", sort_type2str(type));
+
+  sort(arr, size, sizeof(float), float_cmp_ascending, type);
+
+  ret = is_array_sorted(arr, size, sizeof(float), float_cmp_ascending);
+
+  if(arr) {
+  
+    free(arr);
+  }
+
+  return ret;
+}
+
+/**************************************
+          GENERAL_TEST_ENDS
+ *************************************/
+
 /***************************************
  *          TEST_FUNCTION
  ***************************************/
@@ -1550,17 +1813,92 @@ test_for_points_arr (sort_type_e type)
 }
   
 void
+test_for_arr (sort_type_e type)
+{
+  
+  /*
+  if(test_1(type)) {
+  
+    printf("%s\n", "SUCCESS");
+  } else {
+  
+    printf("%s\n", "FAILURE");
+  }
+
+  if(test_2(type)) {
+  
+    printf("%s\n", "SUCCESS");
+  } else {
+  
+    printf("%s\n", "FAILURE");
+  }
+
+  if(test_3(type)) {
+  
+    printf("%s\n", "SUCCESS");
+  } else {
+  
+    printf("%s\n", "FAILURE");
+  }
+
+  if(test_4(type)) {
+  
+    printf("%s\n", "SUCCESS");
+  } else {
+  
+    printf("%s\n", "FAILURE");
+  }
+  */
+  if(test_5(type)) {
+  
+    printf("%s\n", "SUCCESS");
+  } else {
+  
+    printf("%s\n", "FAILURE");
+  }
+/*
+  if(test_6(type)) {
+  
+    printf("%s\n", "SUCCESS");
+  } else {
+  
+    printf("%s\n", "FAILURE");
+  }
+
+  if(test_7(type)) {
+  
+    printf("%s\n", "SUCCESS");
+  } else {
+  
+    printf("%s\n", "FAILURE");
+  }
+
+  if(test_8(type)) {
+  
+    printf("%s\n", "SUCCESS");
+  } else {
+  
+    printf("%s\n", "FAILURE");
+  }
+*/
+}
+
+void
 test_cases ()
 {
 
   size_t i = 0;
 
-  for(i = MSORT; i <= MSORT; i++) {
+  //used for generating random number
+  srand(time(0));
+  
+  for(i = HSORT; i <= HSORT; i++) {
   
     //test_for_int_arr(i);
     //test_for_float_arr(i);
     //test_for_char_arr(i);
     //test_for_points_arr(i);
+    test_for_arr(i);
   }
 
   return;

@@ -188,7 +188,7 @@ merge_sort (void *arr, size_t arr_size,size_t elem_size,
 {
 
   if(!arr || !arr_size) {
-    printf("ARRAY EMPTY\n");
+    printf("ARRAY EMPTY ");
     return;
   }
 

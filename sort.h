@@ -37,4 +37,7 @@ void
 merge_sort (void *arr, size_t arr_size,size_t elem_size, 
             int (*cmp)(const void *, const void *));
 
+void
+heap_sort (void *arr, size_t arr_size, size_t elem_size,
+           cmp_e (*cmp)(const void *, const void *));
 #endif
