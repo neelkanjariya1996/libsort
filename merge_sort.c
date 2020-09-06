@@ -1,25 +1,20 @@
 #include "sort.h"
 
 /*
- * This function uses memcmp to compare two
- * array elements if NULL is passed to the 
- * compare function, else uses the compare 
- * function passed by user.
+ * This function uses memcmp to compare two array elements if NULL is passed 
+ * to the compare function, else uses the compare function passed by user.
  *
- * @input1 p1 pointer to element_1
- * @input2 p2 pointer to element_2
- * @input3 elem_size size of each individual 
- *                   array element
- * @input4 cmp compare function to be 
- *             used if passed from user
+ * @param1 p1         Pointer to element_1
+ * @param2 p2         Pointer to element_2
+ * @param3 elem_size  Size of each individual array element
+ * @param4 cmp        Compare function to be used if passed from user
  *
- * @return cmp_e SORT_LT -> element_1 is less than element_2
- *               SORT_EQ -> element_1 is equal to element_2
- *               SORT_GT-> element_1 is greater than element_2
+ * @return cmp_e      SORT_LT -> element_1 is less than element_2
+ *                    SORT_EQ -> element_1 is equal to element_2
+ *                    SORT_GT-> element_1 is greater than element_2
  */
 static cmp_e
-merge_cmp (const void *p1, const void *p2, 
-           size_t elem_size,
+merge_cmp (const void *p1, const void *p2, size_t elem_size,
            cmp_e (*cmp)(const void *, const void *))
 {
 
@@ -47,34 +42,31 @@ merge_cmp (const void *p1, const void *p2,
 }
 
 /*
- * This function merges two subarrays of arr[low...high]
- * and after merging, the array is sorted based on the 
- * compare function.
+ * This function merges two subarrays of arr[low...high] and after merging,
+ * the array is sorted based on the compare function.
+ *
  * The first subarray is arr[low...mid]
  * The second subarray is arr[mid + 1...high]
  * 
- * @input1 arr the array to be sorted
- * @input2 elem_size size of each individual 
- *                   array element
- * @input3 low low index of the array
- * @input4 mid middle index of the array
- * @input5 high high index of the array
- * @input6 cmp compare function used to compare two 
- *             array elements
+ * @param1 arr        The array to be sorted
+ * @param2 elem_size  Size of each individual array element
+ * @param3 low        Low index of the array
+ * @param4 mid        Middle index of the array
+ * @param5 high       High index of the array
+ * @param6 cmp        Compare function used to compare two array elements
  */
 void
-merge (void *arr, size_t elem_size, size_t low, 
-       size_t mid, size_t high, 
+merge (void *arr, size_t elem_size, size_t low, size_t mid, size_t high, 
        cmp_e (*cmp)(const void *, const void *))
 {
 
-  size_t n1 = 0;    //size of first subarray
-  size_t n2 = 0;    //size of second subarray
+  size_t n1 = 0;    //Size of first subarray
+  size_t n2 = 0;    //Size of second subarray
   size_t i = 0;
   size_t j = 0;
   size_t k = 0;
-  void *L;          //temporary array for first subarray
-  void *R;          //temporary array for second subarray
+  void *L;          //Temporary array for first subarray
+  void *R;          //Temporary array for second subarray
 
   if(!arr) {
 
@@ -103,7 +95,7 @@ merge (void *arr, size_t elem_size, size_t low,
     return;
   }
 
-  /* copy first half(low...mid) of array to L
+  /* Copy first half(low...mid) of array to L
    * and second half(mid + 1...high) to R
    */
   memcpy(L, ARR_LOC(arr, low, elem_size), 
@@ -115,9 +107,9 @@ merge (void *arr, size_t elem_size, size_t low,
    * Merge the two temporary subarrays L and R 
    * back to arr[low...high]
    */
-  i = 0;            //initial index of first subarray
-  j = 0;            //initial index of second subarray
-  k = low;          //initial index of merged subarray
+  i = 0;            //Initial index of first subarray
+  j = 0;            //Initial index of second subarray
+  k = low;          //Initial index of merged subarray
   while((i < n1) && (j < n2)) {
   
     /* Compare two elements and place them in the 
@@ -184,17 +176,14 @@ merge (void *arr, size_t elem_size, size_t low,
  * array into smaller subarrays and then merges them
  * to form the sorted array.
  * 
- * @input1 arr the array to be sorted
- * @input2 elem_size size of each individual 
- *                   array element
- * @input3 low low index of the subarray
- * @input4 high high index of the subarray
- * @input5 cmp compare function used to compare two 
- *             array elements
+ * @param1 arr        The array to be sorted
+ * @param2 elem_size  Size of each individual array element
+ * @param3 low        Low index of the subarray
+ * @param4 high       High index of the subarray
+ * @param5 cmp        Compare function used to compare two array elements
  */
 void
-merge_sort_recur (void *arr, size_t elem_size, 
-                  size_t low, size_t high,
+merge_sort_recur (void *arr, size_t elem_size, size_t low, size_t high,
                   cmp_e (*cmp)(const void *, const void *))
 {
   
@@ -224,19 +213,14 @@ merge_sort_recur (void *arr, size_t elem_size,
 }
 
 /*
- * Given an array, this function 
- * sorts the array based on the compare
- * function passed. If no compare function 
- * is provided, it uses memcmp(), to compare 
+ * Given an array, this function sorts the array based on the compare function
+ * passed. If no compare function is provided, it uses memcmp(), to compare 
  * the elements of the array.
  *
- * @input1 arr the array to be sorted
- * @input2 arr_size number of elements in
- *                  the array
- * @input3 elem_size size of each individual 
- *                   array element
- * @input4 cmp compare function used to compare two 
- *             array elements
+ * @param1 arr        The array to be sorted
+ * @param2 arr_size   Number of elements in the array
+ * @param3 elem_size  Size of each individual array element
+ * @param4 cmp        Compare function used to compare two array elements
  */
 void
 merge_sort (void *arr, size_t arr_size,size_t elem_size, 

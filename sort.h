@@ -14,28 +14,24 @@ typedef enum cmp_e_{
 }cmp_e;
 
 /*
- * macro to access a void* array for a given 
- * element size
+ * macro to access a void* array for a given element size
  *
- * @input1 arr the pointer to the array
- * @input2 ind the index you want to change/use
- * @input3 elem_size size of each individual 
- *                   array element
+ * @param1 arr        The pointer to the array
+ * @param2 ind        The index you want to change/use
+ * @param3 elem_size  Size of each individual array element
  *
- * @return returns the array location of the index
+ * @return            Returns the array location of the index
  */
 #define ARR_LOC(arr, ind, elem_size) (arr + (ind * elem_size))
 
 /*
  * merge_sort function used by the user
  *
- * @input1 arr the array to be sorted
- * @input2 arr_size number of elements in
- *                  the array
- * @input3 elem_size size of each individual 
- *                   array element
- * @input4 cmp compare function used to compare two 
- *             array elements
+ * @param1 arr        The array to be sorted
+ * @param2 arr_size   Number of elements in
+ *                    the array
+ * @param3 elem_size  Size of each individual array element
+ * @param4 cmp        Compare function used to compare two array elements
  */
 void
 merge_sort (void *arr, size_t arr_size,size_t elem_size, 
