@@ -27,11 +27,11 @@
  * @input4 cmp compare function to be 
  *             used if passed from user
  *
- * @return int < 0 -> element_1 is less than element_2
- *             = 0 -> element_1 is equal to element_2
- *             > 0 -> element_1 is greater than element_2
+ * @return cmp_e MERGESORT_LT -> element_1 is less than element_2
+ *               MERGESORT_EQ -> element_1 is equal to element_2
+ *               MERGESORT_GT-> element_1 is greater than element_2
  */
-static int
+static cmp_e
 merge_cmp (const void *p1, const void *p2, 
            size_t elem_size,
            cmp_e (*cmp)(const void *, const void *))
@@ -42,6 +42,16 @@ merge_cmp (const void *p1, const void *p2,
   if(!cmp) {
  
     ret =  memcmp(p1, p2, elem_size);
+    if(ret < 0) {
+    
+      ret =  MERGESORT_LT;
+    } else if (ret > 0) {
+    
+      ret = MERGESORT_GT;
+    } else {
+    
+      ret = MERGESORT_EQ;
+    }
   } else {
     
     ret = (cmp(p1, p2));
