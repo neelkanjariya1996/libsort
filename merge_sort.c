@@ -1,18 +1,4 @@
-#include "merge_sort.h"
-
-/*
- * This macro is used to do pointer arithmetic 
- * to get the array location based on index and 
- * each array element size
- *
- * @input1 arr the pointer to the array
- * @input2 ind the index you want to change/use
- * @input3 elem_size size of each individual 
- *                   array element
- *
- * @return returns the array location of the index
- */
-#define ARR_LOC(arr, ind, elem_size) (arr + (ind * elem_size))
+#include "sort.h"
 
 /*
  * This function uses memcmp to compare two
@@ -27,9 +13,9 @@
  * @input4 cmp compare function to be 
  *             used if passed from user
  *
- * @return cmp_e MERGESORT_LT -> element_1 is less than element_2
- *               MERGESORT_EQ -> element_1 is equal to element_2
- *               MERGESORT_GT-> element_1 is greater than element_2
+ * @return cmp_e SORT_LT -> element_1 is less than element_2
+ *               SORT_EQ -> element_1 is equal to element_2
+ *               SORT_GT-> element_1 is greater than element_2
  */
 static cmp_e
 merge_cmp (const void *p1, const void *p2, 
@@ -44,13 +30,13 @@ merge_cmp (const void *p1, const void *p2,
     ret =  memcmp(p1, p2, elem_size);
     if(ret < 0) {
     
-      ret =  MERGESORT_LT;
+      ret =  SORT_LT;
     } else if (ret > 0) {
     
-      ret = MERGESORT_GT;
+      ret = SORT_GT;
     } else {
     
-      ret = MERGESORT_EQ;
+      ret = SORT_EQ;
     }
   } else {
     
@@ -140,7 +126,7 @@ merge (void *arr, size_t elem_size, size_t low,
      */
     if( merge_cmp((void *)ARR_LOC(L, i, elem_size), 
                   (void *)ARR_LOC(R, j, elem_size), 
-                  elem_size, cmp) == MERGESORT_LT) {
+                  elem_size, cmp) == SORT_LT) {
     
       memcpy(ARR_LOC(arr, k, elem_size),
              ARR_LOC(L, i, elem_size), elem_size);

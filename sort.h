@@ -1,6 +1,6 @@
-#ifndef __MERGE_SORT_H__
+#ifndef __SORT_H__
 
-#define __MERGE_SORT_H__
+#define __SORT_H__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,10 +8,23 @@
 
 typedef enum cmp_e_{
 
-  MERGESORT_LT = -1,
-  MERGESORT_EQ,
-  MERGESORT_GT,
+  SORT_LT = -1,
+  SORT_EQ,
+  SORT_GT,
 }cmp_e;
+
+/*
+ * macro to access a void* array for a given 
+ * element size
+ *
+ * @input1 arr the pointer to the array
+ * @input2 ind the index you want to change/use
+ * @input3 elem_size size of each individual 
+ *                   array element
+ *
+ * @return returns the array location of the index
+ */
+#define ARR_LOC(arr, ind, elem_size) (arr + (ind * elem_size))
 
 /*
  * merge_sort function used by the user

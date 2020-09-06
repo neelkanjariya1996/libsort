@@ -4,7 +4,7 @@
 #include <limits.h>
 #include <time.h>
 
-#include "merge_sort.h"
+#include "sort.h"
 
 #define ONE_KB_BYTE   1000
 #define ONE_MB_BYTE   1000000
@@ -50,15 +50,15 @@ int_cmp_ascending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
   if(!k2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 
   p1 = (int *)k1;
@@ -66,13 +66,13 @@ int_cmp_ascending (const void *k1, const void *k2)
 
   if(*p1 < *p2) {
   
-    return MERGESORT_LT; 
+    return SORT_LT; 
   } else if(*p1 > *p2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   } else {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
 }
 
@@ -89,15 +89,15 @@ int_cmp_descending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
   if(!k2) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
 
   p1 = (int *)k1;
@@ -105,13 +105,13 @@ int_cmp_descending (const void *k1, const void *k2)
 
   if(*p2 < *p1) {
   
-    return MERGESORT_LT; 
+    return SORT_LT; 
   } else if(*p2 > *p1) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   } else {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
 }
 
@@ -322,15 +322,15 @@ float_cmp_ascending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
   if(!k2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 
   p1 = (float *)k1;
@@ -338,13 +338,13 @@ float_cmp_ascending (const void *k1, const void *k2)
 
   if(*p1 < *p2) {
   
-    return MERGESORT_LT; 
+    return SORT_LT; 
   } else if(*p1 > *p2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   } else {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
 }
 
@@ -361,15 +361,15 @@ float_cmp_descending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
   if(!k2) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
 
   p1 = (float *)k1;
@@ -377,13 +377,13 @@ float_cmp_descending (const void *k1, const void *k2)
 
   if(*p2 < *p1) {
   
-    return MERGESORT_LT; 
+    return SORT_LT; 
   } else if(*p2 > *p1) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   } else {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
 }
 
@@ -592,15 +592,15 @@ char_cmp_ascending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
   if(!k2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 
   p1 = (char *)k1;
@@ -608,13 +608,13 @@ char_cmp_ascending (const void *k1, const void *k2)
 
   if(*p1 < *p2) {
   
-    return MERGESORT_LT; 
+    return SORT_LT; 
   } else if(*p1 > *p2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   } else {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
 }
 
@@ -631,15 +631,15 @@ char_cmp_descending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
   if(!k2) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
 
   p1 = (char *)k1;
@@ -647,13 +647,13 @@ char_cmp_descending (const void *k1, const void *k2)
 
   if(*p2 < *p1) {
   
-    return MERGESORT_LT; 
+    return SORT_LT; 
   } else if(*p2 > *p1) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   } else {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
 }
 
@@ -928,15 +928,15 @@ point_x_cmp_ascending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
   if(!k2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 
   p1 = (point_t *) k1;
@@ -946,20 +946,20 @@ point_x_cmp_ascending (const void *k1, const void *k2)
   
     if(p1->y < p2->y) {
     
-      return MERGESORT_LT;
+      return SORT_LT;
     } else if(p1->y > p2->y) {
     
-      return MERGESORT_GT;
+      return SORT_GT;
     } else {
     
-      return MERGESORT_EQ;
+      return SORT_EQ;
     }
   } else if(p1->x < p2->x) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   } else {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 }
 
@@ -977,15 +977,15 @@ point_y_cmp_ascending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
   if(!k2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 
   p1 = (point_t *) k1;
@@ -995,20 +995,20 @@ point_y_cmp_ascending (const void *k1, const void *k2)
   
     if(p1->x < p2->x) {
     
-      return MERGESORT_LT;
+      return SORT_LT;
     } else if(p1->x > p2->x) {
     
-      return MERGESORT_GT;
+      return SORT_GT;
     } else {
     
-      return MERGESORT_EQ;
+      return SORT_EQ;
     }
   } else if(p1->y < p2->y) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   } else {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 }
 
@@ -1026,15 +1026,15 @@ point_x_cmp_descending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
   if(!k2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 
   p1 = (point_t *) k1;
@@ -1044,20 +1044,20 @@ point_x_cmp_descending (const void *k1, const void *k2)
   
     if(p2->y < p1->y) {
     
-      return MERGESORT_LT;
+      return SORT_LT;
     } else if(p2->y > p1->y) {
     
-      return MERGESORT_GT;
+      return SORT_GT;
     } else {
     
-      return MERGESORT_EQ;
+      return SORT_EQ;
     }
   } else if(p2->x < p1->x) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   } else {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 }
 
@@ -1075,15 +1075,15 @@ point_y_cmp_descending (const void *k1, const void *k2)
 
   if(!k1 && !k2) {
   
-    return MERGESORT_EQ;
+    return SORT_EQ;
   }
   if(!k1) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   }
   if(!k2) {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 
   p1 = (point_t *) k1;
@@ -1093,20 +1093,20 @@ point_y_cmp_descending (const void *k1, const void *k2)
   
     if(p2->x < p1->x) {
     
-      return MERGESORT_LT;
+      return SORT_LT;
     } else if(p2->x > p1->x) {
     
-      return MERGESORT_GT;
+      return SORT_GT;
     } else {
     
-      return MERGESORT_EQ;
+      return SORT_EQ;
     }
   } else if(p2->y < p1->y) {
   
-    return MERGESORT_LT;
+    return SORT_LT;
   } else {
   
-    return MERGESORT_GT;
+    return SORT_GT;
   }
 }
 
