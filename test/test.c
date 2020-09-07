@@ -9,51 +9,51 @@ typedef enum sort_type_e_ {
 
 typedef enum test_cases_e_ {
 
-  int_test_1 = 0,
-  int_test_2,
-  int_test_3,
-  int_test_4,
-  int_test_5,
-  int_test_6,
-  int_test_7,
-  int_test_8,
-  int_test_9,
-  float_test_1,
-  float_test_2,
-  float_test_3,
-  float_test_4,
-  float_test_5,
-  float_test_6,
-  float_test_7,
-  float_test_8,
-  float_test_9,
-  char_test_1,
-  char_test_2,
-  char_test_3,
-  char_test_4,
-  char_test_5,
-  char_test_6,
-  char_test_7,
-  char_test_8,
-  char_test_9,
-  char_test_10,
-  char_test_11,
-  point_t_test_1,
-  point_t_test_2,
-  point_t_test_3,
-  point_t_test_4,
-  point_t_test_5,
-  point_t_test_6,
-  point_t_test_7,
-  point_t_test_8,
-  test_1,
-  test_2,
-  test_3,
-  test_4,
-  test_5,
-  test_6,
-  test_7,
-  test_8,
+  INT_TEST_1 = 0,
+  INT_TEST_2,
+  INT_TEST_3,
+  INT_TEST_4,
+  INT_TEST_5,
+  INT_TEST_6,
+  INT_TEST_7,
+  INT_TEST_8,
+  INT_TEST_9,
+  FLOAT_TEST_1,
+  FLOAT_TEST_2,
+  FLOAT_TEST_3,
+  FLOAT_TEST_4,
+  FLOAT_TEST_5,
+  FLOAT_TEST_6,
+  FLOAT_TEST_7,
+  FLOAT_TEST_8,
+  FLOAT_TEST_9,
+  CHAR_TEST_1,
+  CHAR_TEST_2,
+  CHAR_TEST_3,
+  CHAR_TEST_4,
+  CHAR_TEST_5,
+  CHAR_TEST_6,
+  CHAR_TEST_7,
+  CHAR_TEST_8,
+  CHAR_TEST_9,
+  CHAR_TEST_10,
+  CHAR_TEST_11,
+  POINT_T_TEST_1,
+  POINT_T_TEST_2,
+  POINT_T_TEST_3,
+  POINT_T_TEST_4,
+  POINT_T_TEST_5,
+  POINT_T_TEST_6,
+  POINT_T_TEST_7,
+  POINT_T_TEST_8,
+  TEST_1,
+  TEST_2,
+  TEST_3,
+  TEST_4,
+  TEST_5,
+  TEST_6,
+  TEST_7,
+  TEST_8,
 } test_cases_e;
 
 /*
@@ -141,7 +141,7 @@ generate_input (void **arr, size_t *arr_size,
     /*
      * Integer test cases
      */
-    case int_test_1:
+    case INT_TEST_1:
       
       /*
        * Test for sorting positive integer array in asceding order
@@ -149,7 +149,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_1: Malloc Failure\n");
         return;
       }
 
@@ -169,7 +169,7 @@ generate_input (void **arr, size_t *arr_size,
                     "array in ascending order", name_size);
       cmp = int_cmp_ascending;
     break;
-    case int_test_2:
+    case INT_TEST_2:
     
       /*
        * Test for sorting positive integer array in desceding order
@@ -177,7 +177,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_2: Malloc Failure\n");
         return;
       }
 
@@ -197,7 +197,7 @@ generate_input (void **arr, size_t *arr_size,
                     "array in descending order", name_size);
       cmp = int_cmp_descending;
     break;
-    case int_test_3:
+    case INT_TEST_3:
     
       /*
        * Test for sorting negative integer array in asceding order
@@ -205,7 +205,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_3: Malloc Failure\n");
         return;
       }
 
@@ -225,7 +225,7 @@ generate_input (void **arr, size_t *arr_size,
                     "array in ascending order", name_size);
       cmp = int_cmp_ascending;
     break;
-    case int_test_4:
+    case INT_TEST_4:
     
       /*
        * Test for sorting negative integer array in desceding order
@@ -233,7 +233,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_4: Malloc Failure\n");
         return;
       }
 
@@ -253,7 +253,7 @@ generate_input (void **arr, size_t *arr_size,
                     "array in descending order", name_size);
       cmp = int_cmp_descending;
     break;
-    case int_test_5:
+    case INT_TEST_5:
     
       /*
        * Test for sorting integer array in asceding order
@@ -261,7 +261,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_5: Malloc Failure\n");
         return;
       }
 
@@ -284,7 +284,7 @@ generate_input (void **arr, size_t *arr_size,
                     "array in ascending order", name_size);
       cmp = int_cmp_ascending;
     break;
-    case int_test_6:
+    case INT_TEST_6:
     
       /*
        * Test for sorting integer array in desceding order
@@ -292,7 +292,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_6: Malloc Failure\n");
         return;
       }
 
@@ -315,7 +315,7 @@ generate_input (void **arr, size_t *arr_size,
                     "array in descending order", name_size);
       cmp = int_cmp_descending;
     break;
-    case int_test_7:
+    case INT_TEST_7:
     
       /*
        * Test for sorting integer array of size 1 in asceding order
@@ -323,7 +323,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_1 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_7: Malloc Failure\n");
         return;
       }
 
@@ -339,7 +339,7 @@ generate_input (void **arr, size_t *arr_size,
               " of size 1 in ascending order", name_size);
       cmp = int_cmp_ascending;
     break;
-    case int_test_8:
+    case INT_TEST_8:
     
       /*
        * Test for sorting integer array of size 2 in asceding order
@@ -347,7 +347,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_2 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_8: Malloc Failure\n");
         return;
       }
 
@@ -363,7 +363,7 @@ generate_input (void **arr, size_t *arr_size,
               " of size 2 in ascending order", name_size);
       cmp = int_cmp_ascending;
     break;
-    case int_test_9:
+    case INT_TEST_9:
     
       /*
        * Test for sorting integer array with all elements 
@@ -372,7 +372,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("INT_TEST_9: Malloc Failure\n");
         return;
       }
 
@@ -392,7 +392,7 @@ generate_input (void **arr, size_t *arr_size,
     /*
      * Float test cases
      */
-    case float_test_1:
+    case FLOAT_TEST_1:
 
     /*
      * Test for sorting positive float array in ascending order
@@ -400,7 +400,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_10 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_1: Malloc Failure\n");
         return;
       }
 
@@ -420,7 +420,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in ascending order", name_size);
       cmp = float_cmp_ascending;
     break;
-    case float_test_2:
+    case FLOAT_TEST_2:
 
     /*
      * Test for sorting positive float array in descending order
@@ -428,7 +428,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_10 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_2: Malloc Failure\n");
         return;
       }
 
@@ -448,7 +448,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in descending order", name_size);
       cmp = float_cmp_descending;
     break;
-    case float_test_3:
+    case FLOAT_TEST_3:
 
     /*
      * Test for sorting negative float array in ascending order
@@ -456,7 +456,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_10 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_3: Malloc Failure\n");
         return;
       }
 
@@ -476,7 +476,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in ascending order", name_size);
       cmp = float_cmp_ascending;
     break;
-    case float_test_4:
+    case FLOAT_TEST_4:
 
     /*
      * Test for sorting negative float array in descending order
@@ -484,7 +484,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_10 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_4: Malloc Failure\n");
         return;
       }
 
@@ -504,7 +504,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in descending order", name_size);
       cmp = float_cmp_descending;
     break;
-    case float_test_5:
+    case FLOAT_TEST_5:
 
     /*
      * Test for sorting float array in ascending order
@@ -512,7 +512,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_10 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_5: Malloc Failure\n");
         return;
       }
 
@@ -535,7 +535,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in ascending order", name_size);
       cmp = float_cmp_ascending;
     break;
-    case float_test_6:
+    case FLOAT_TEST_6:
 
     /*
      * Test for sorting float array in descending order
@@ -543,7 +543,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_10 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_6: Malloc Failure\n");
         return;
       }
 
@@ -566,7 +566,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in descending order", name_size);
       cmp = float_cmp_descending;
     break;
-    case float_test_7:
+    case FLOAT_TEST_7:
 
     /*
      * Test for sorting float array of size 1 in descending order
@@ -574,7 +574,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_1 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_7: Malloc Failure\n");
         return;
       }
 
@@ -590,7 +590,7 @@ generate_input (void **arr, size_t *arr_size,
                     " size 1 in descending order", name_size);
       cmp = float_cmp_descending;
     break;
-    case float_test_8:
+    case FLOAT_TEST_8:
 
     /*
      * Test for sorting float array of size 2 in descending order
@@ -598,7 +598,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_2 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_8: Malloc Failure\n");
         return;
       }
 
@@ -614,7 +614,7 @@ generate_input (void **arr, size_t *arr_size,
                     " 2 in descending order", name_size);
       cmp = float_cmp_descending;
     break;
-    case float_test_9:
+    case FLOAT_TEST_9:
 
     /*
      * Test for sorting float array with all element equal in ascending order
@@ -622,7 +622,7 @@ generate_input (void **arr, size_t *arr_size,
       float_a = malloc(ARR_SIZE_10 * sizeof(float));
       if(!float_a) {
       
-        printf("Malloc Failure\n");
+        printf("FLOAT_TEST_9: Malloc Failure\n");
         return;
       }
 
@@ -642,7 +642,7 @@ generate_input (void **arr, size_t *arr_size,
     /*
      * Character test cases
      */
-    case char_test_1:
+    case CHAR_TEST_1:
 
       /*
        * Test for sorting capital letters in ascending order
@@ -650,7 +650,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_1: Malloc Failure\n");
         return;
       }
 
@@ -666,7 +666,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in ascending order", name_size);
       cmp = char_cmp_ascending;
     break;
-    case char_test_2:
+    case CHAR_TEST_2:
 
       /*
        * Test for sorting capital letters in descending order
@@ -674,7 +674,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_2: Malloc Failure\n");
         return;
       }
 
@@ -690,7 +690,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in descending order", name_size);
       cmp = char_cmp_descending;
     break;
-    case char_test_3:
+    case CHAR_TEST_3:
 
       /*
        * Test for sorting small letters in ascending order
@@ -698,7 +698,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_3: Malloc Failure\n");
         return;
       }
 
@@ -714,7 +714,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in ascending order", name_size);
       cmp = char_cmp_ascending;
     break;
-    case char_test_4:
+    case CHAR_TEST_4:
 
       /*
        * Test for sorting small letters in descending order
@@ -722,7 +722,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_4: Malloc Failure\n");
         return;
       }
 
@@ -738,7 +738,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in descending order", name_size);
       cmp = char_cmp_descending;
     break;
-    case char_test_5:
+    case CHAR_TEST_5:
 
       /*
        * Test for sorting characters in ascending order
@@ -746,7 +746,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_5: Malloc Failure\n");
         return;
       }
 
@@ -762,7 +762,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in ascending order", name_size);
       cmp = char_cmp_ascending;
     break;
-    case char_test_6:
+    case CHAR_TEST_6:
 
       /*
        * Test for sorting characters in descending order
@@ -770,7 +770,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_6: Malloc Failure\n");
         return;
       }
 
@@ -786,7 +786,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in descending order", name_size);
       cmp = char_cmp_descending;
     break;
-    case char_test_7:
+    case CHAR_TEST_7:
 
       /*
        * Test for sorting special characters in ascending order
@@ -794,7 +794,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_7: Malloc Failure\n");
         return;
       }
 
@@ -810,7 +810,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in ascending order", name_size);
       cmp = char_cmp_ascending;
     break;
-    case char_test_8:
+    case CHAR_TEST_8:
 
       /*
        * Test for sorting special characters in descending order
@@ -818,7 +818,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_8: Malloc Failure\n");
         return;
       }
 
@@ -834,7 +834,7 @@ generate_input (void **arr, size_t *arr_size,
                     " in descending order", name_size);
       cmp = char_cmp_descending;
     break;
-    case char_test_9:
+    case CHAR_TEST_9:
 
       /*
        * Test for sorting char array of size 1 in descending order
@@ -842,7 +842,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_1 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_9: Malloc Failure\n");
         return;
       }
 
@@ -858,7 +858,7 @@ generate_input (void **arr, size_t *arr_size,
                     " 1 in descending order", name_size);
       cmp = char_cmp_descending;
     break;
-    case char_test_10:
+    case CHAR_TEST_10:
 
       /*
        * Test for sorting char array of size 2 in ascending order
@@ -866,7 +866,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_2 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_10: Malloc Failure\n");
         return;
       }
 
@@ -882,7 +882,7 @@ generate_input (void **arr, size_t *arr_size,
                     " 2 in ascending order", name_size);
       cmp = char_cmp_ascending;
     break;
-    case char_test_11:
+    case CHAR_TEST_11:
 
       /*
        * Test for sorting char array with all characters
@@ -891,7 +891,7 @@ generate_input (void **arr, size_t *arr_size,
       char_a = malloc(ARR_SIZE_10 * sizeof(char));
       if(!char_a) {
       
-        printf("Malloc Failure\n");
+        printf("CHAR_TEST_11: Malloc Failure\n");
         return;
       }
 
@@ -911,7 +911,7 @@ generate_input (void **arr, size_t *arr_size,
     /*
      * Points test cases
      */
-    case point_t_test_1:
+    case POINT_T_TEST_1:
 
       /*
        * Test for sorting points array in
@@ -920,7 +920,7 @@ generate_input (void **arr, size_t *arr_size,
       point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
       if(!point_t_a) {
       
-        printf("Malloc Failure\n");
+        printf("POINT_T_TEST_1: Malloc Failure\n");
         return;
       }
 
@@ -945,7 +945,7 @@ generate_input (void **arr, size_t *arr_size,
                     " order based on x coordinate", name_size);
       cmp = point_x_cmp_ascending;
     break;
-    case point_t_test_2:
+    case POINT_T_TEST_2:
 
       /*
        * Test for sorting points array in
@@ -954,7 +954,7 @@ generate_input (void **arr, size_t *arr_size,
       point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
       if(!point_t_a) {
       
-        printf("Malloc Failure\n");
+        printf("POINT_T_TEST_2: Malloc Failure\n");
         return;
       }
 
@@ -979,7 +979,7 @@ generate_input (void **arr, size_t *arr_size,
                     " order based on y coordinate", name_size);
       cmp = point_y_cmp_ascending;
     break;
-    case point_t_test_3:
+    case POINT_T_TEST_3:
 
       /*
        * Test for sorting points array in
@@ -988,7 +988,7 @@ generate_input (void **arr, size_t *arr_size,
       point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
       if(!point_t_a) {
       
-        printf("Malloc Failure\n");
+        printf("POINT_T_TEST_3: Malloc Failure\n");
         return;
       }
 
@@ -1013,7 +1013,7 @@ generate_input (void **arr, size_t *arr_size,
                     " order based on x coordinate", name_size);
       cmp = point_x_cmp_descending;
     break;
-    case point_t_test_4:
+    case POINT_T_TEST_4:
 
       /*
        * Test for sorting points array in
@@ -1022,7 +1022,7 @@ generate_input (void **arr, size_t *arr_size,
       point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
       if(!point_t_a) {
       
-        printf("Malloc Failure\n");
+        printf("POINT_T_TEST_4: Malloc Failure\n");
         return;
       }
 
@@ -1047,7 +1047,7 @@ generate_input (void **arr, size_t *arr_size,
                     " order based on y coordinate", name_size);
       cmp = point_y_cmp_descending;
     break;
-    case point_t_test_5:
+    case POINT_T_TEST_5:
 
       /*
        * Test for sorting points array in
@@ -1056,7 +1056,7 @@ generate_input (void **arr, size_t *arr_size,
       point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
       if(!point_t_a) {
       
-        printf("Malloc Failure\n");
+        printf("POINT_T_TEST_5: Malloc Failure\n");
         return;
       }
 
@@ -1087,7 +1087,7 @@ generate_input (void **arr, size_t *arr_size,
                     " order based on x coordinate", name_size);
       cmp = point_x_cmp_ascending;
     break;
-    case point_t_test_6:
+    case POINT_T_TEST_6:
 
       /*
        * Test for sorting points array in
@@ -1096,7 +1096,7 @@ generate_input (void **arr, size_t *arr_size,
       point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
       if(!point_t_a) {
       
-        printf("Malloc Failure\n");
+        printf("POINT_T_TEST_6: Malloc Failure\n");
         return;
       }
 
@@ -1127,7 +1127,7 @@ generate_input (void **arr, size_t *arr_size,
                     " order based on y coordinate", name_size);
       cmp = point_y_cmp_ascending;
     break;
-    case point_t_test_7:
+    case POINT_T_TEST_7:
 
       /*
        * Test for sorting points array in
@@ -1136,7 +1136,7 @@ generate_input (void **arr, size_t *arr_size,
       point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
       if(!point_t_a) {
       
-        printf("Malloc Failure\n");
+        printf("POINT_T_TEST_7: Malloc Failure\n");
         return;
       }
 
@@ -1167,7 +1167,7 @@ generate_input (void **arr, size_t *arr_size,
                     " order based on x coordinate", name_size);
       cmp = point_x_cmp_descending;
     break;
-    case point_t_test_8:
+    case POINT_T_TEST_8:
 
       /*
        * Test for sorting points array in
@@ -1176,7 +1176,7 @@ generate_input (void **arr, size_t *arr_size,
       point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
       if(!point_t_a) {
       
-        printf("Malloc Failure\n");
+        printf("POINT_T_TEST_8: Malloc Failure\n");
         return;
       }
 
@@ -1211,7 +1211,7 @@ generate_input (void **arr, size_t *arr_size,
     /*
      * General test cases
      */
-    case test_1:
+    case TEST_1:
 
       /*
        * Array passed as NULL
@@ -1222,7 +1222,7 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for empty array", name_size);
       cmp = int_cmp_ascending;
     break;
-    case test_2:
+    case TEST_2:
 
       /*
        * Compare function passed as NULL
@@ -1230,7 +1230,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("test_2: Malloc Failure\n");
+        printf("TEST_2: Malloc Failure\n");
         return;
       }
 
@@ -1245,7 +1245,7 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for compare function passed as NULL", name_size);
       cmp = NULL;
     break;
-    case test_3:
+    case TEST_3:
 
       /*
        * Test for 1KB of integer array
@@ -1253,7 +1253,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc((_1KB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("test_3: Malloc Failure\n");
+        printf("TEST_3: Malloc Failure\n");
         return;
       }
 
@@ -1268,7 +1268,7 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for 1KB of integer array", name_size);
       cmp = int_cmp_ascending;
     break;
-    case test_4:
+    case TEST_4:
 
       /*
        * Test for 1MB of integer array
@@ -1276,7 +1276,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc((_1MB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("tes_4: Malloc Failure\n");
+        printf("TEST_4: Malloc Failure\n");
         return;
       }
 
@@ -1291,7 +1291,7 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for 1MB of integer array", name_size);
       cmp = int_cmp_ascending;
     break;
-    case test_5:
+    case TEST_5:
 
       /*
        * Test for 128MB of integer array
@@ -1299,7 +1299,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc((_128MB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("test_5: Malloc Failure\n");
+        printf("TEST_5: Malloc Failure\n");
         return;
       }
 
@@ -1314,7 +1314,7 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for 128MB of integer array", name_size);
       cmp = int_cmp_ascending;
     break;
-    case test_6:
+    case TEST_6:
 
       /*
        * Test for 256MB of integer array
@@ -1322,7 +1322,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc((_256MB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("test_6: Malloc Failure\n");
+        printf("TEST_6: Malloc Failure\n");
         return;
       }
 
@@ -1337,7 +1337,7 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for 256MB of integer array", name_size);
       cmp = int_cmp_ascending;
     break;
-    case test_7:
+    case TEST_7:
 
       /*
        * Test for 512MB of integer array
@@ -1345,7 +1345,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc((_512MB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("test_7: Malloc Failure\n");
+        printf("TEST_7: Malloc Failure\n");
         return;
       }
 
@@ -1360,7 +1360,7 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for 512MB of integer array", name_size);
       cmp = int_cmp_ascending;
     break;
-    case test_8:
+    case TEST_8:
 
       /*
        * Test for 1GB of integer array
@@ -1368,7 +1368,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc((_1GB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("test_8: Malloc Failure\n");
+        printf("TEST_8: Malloc Failure\n");
         return;
       }
 
