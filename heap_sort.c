@@ -118,15 +118,13 @@ heapify (void *arr, size_t arr_size,
  * @return            void
  */
 void
-heap_sort (void *arr, size_t arr_size, size_t elem_size,
+hsort (void *arr, size_t arr_size, size_t elem_size,
            cmp_e (*cmp)(const void *, const void *))
 {
 
   long i = 0;
 
   if(!arr || !arr_size) {
-  
-    printf("ARRAY EMPTY ");
     return;
   }
 

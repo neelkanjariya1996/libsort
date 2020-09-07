@@ -49,13 +49,13 @@ sort (void *arr, size_t arr_size, size_t elem_size,
 
   switch (type) {
     case MSORT:
-      merge_sort(arr, arr_size, elem_size, cmp);
+      msort(arr, arr_size, elem_size, cmp);
       break;
     case HSORT:
-      heap_sort(arr, arr_size, elem_size, cmp);
+      hsort(arr, arr_size, elem_size, cmp);
       break;
     case QSORT:
-      //call qsort
+      qsort(arr, arr_size, elem_size, cmp);
       break;
     default:
       break;
@@ -84,7 +84,6 @@ is_array_sorted (void *arr, size_t arr_size, size_t elem_size,
 
   return true;
 }
-
 
 /***************************************
         TEST_CASES_FOR_INTEGERS
@@ -1814,7 +1813,7 @@ void
 test_for_arr (sort_type_e type)
 {
   
-  /*
+  
   if(test_1(type)) {
   
     printf("%s\n", "SUCCESS");
@@ -1822,7 +1821,7 @@ test_for_arr (sort_type_e type)
   
     printf("%s\n", "FAILURE");
   }
-
+/*
   if(test_2(type)) {
   
     printf("%s\n", "SUCCESS");
@@ -1830,7 +1829,7 @@ test_for_arr (sort_type_e type)
   
     printf("%s\n", "FAILURE");
   }
-
+*/
   if(test_3(type)) {
   
     printf("%s\n", "SUCCESS");
@@ -1846,7 +1845,7 @@ test_for_arr (sort_type_e type)
   
     printf("%s\n", "FAILURE");
   }
-  */
+/*
   if(test_5(type)) {
   
     printf("%s\n", "SUCCESS");
@@ -1854,7 +1853,7 @@ test_for_arr (sort_type_e type)
   
     printf("%s\n", "FAILURE");
   }
-/*
+
   if(test_6(type)) {
   
     printf("%s\n", "SUCCESS");
@@ -1890,13 +1889,14 @@ test_cases ()
   //used for generating random number
   srand(time(0));
   
-  for(i = HSORT; i <= HSORT; i++) {
+  for(i = MSORT; i <= QSORT; i++) {
   
-    //test_for_int_arr(i);
-    //test_for_float_arr(i);
-    //test_for_char_arr(i);
-    //test_for_points_arr(i);
+    test_for_int_arr(i);
+    test_for_float_arr(i);
+    test_for_char_arr(i);
+    test_for_points_arr(i);
     test_for_arr(i);
+    printf("\n\n");
   }
 
   return;

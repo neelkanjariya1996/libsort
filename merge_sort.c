@@ -183,12 +183,11 @@ merge_sort_recur (void *arr, size_t elem_size, size_t low, size_t high,
  * @return            void
  */
 void
-merge_sort (void *arr, size_t arr_size,size_t elem_size, 
+msort (void *arr, size_t arr_size,size_t elem_size, 
             cmp_e (*cmp)(const void *, const void *))
 {
 
   if(!arr || !arr_size) {
-    printf("ARRAY EMPTY ");
     return;
   }
 
