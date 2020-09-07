@@ -12,7 +12,7 @@
  *
  * The first subarray is arr[low...mid]
  * The second subarray is arr[mid + 1...high]
- * 
+ *
  * @param1 arr        The array to be sorted
  * @param2 elem_size  Size of each individual array element
  * @param3 low        Low index of the array
@@ -23,8 +23,8 @@
  * @return            void
  */
 void
-merge (void *arr, size_t elem_size, size_t low, size_t mid, size_t high, 
-       cmp_e (*cmp)(const void *, const void *))
+merge (void *arr, size_t elem_size, size_t low, size_t mid, size_t high,
+       compare_fn cmp)
 {
 
   size_t n1 = 0;    //Size of first subarray
@@ -54,39 +54,39 @@ merge (void *arr, size_t elem_size, size_t low, size_t mid, size_t high,
     return;
   }
 
-  /* 
+  /*
    * Copy left half(low...mid) of array to L
    * and right half(mid + 1...high) to R
    */
-  memcpy(L, ARR_LOC(arr, low, elem_size), 
+  memcpy(L, ARR_LOC(arr, low, elem_size),
         (n1 * elem_size));
   memcpy(R, ARR_LOC(arr, (mid + 1),
          elem_size), (n2 * elem_size));
 
   /*
-   * Merge the two temporary subarrays L and R 
+   * Merge the two temporary subarrays L and R
    * back to arr[low...high]
    */
   i = 0;            //Initial index of left subarray
   j = 0;            //Initial index of right subarray
   k = low;          //Initial index of merged subarray
   while((i < n1) && (j < n2)) {
-  
-    /* 
+
+    /*
      * Compare two elements and place them in the merged
      * array based on compare function to be used.
      */
-    ret = compare(ARR_LOC(L, i, elem_size), 
-                  ARR_LOC(R, j, elem_size), 
+    ret = compare(ARR_LOC(L, i, elem_size),
+                  ARR_LOC(R, j, elem_size),
                   elem_size, cmp);
     if(ret == SORT_LT) {
-    
+
       memcpy(ARR_LOC(arr, k, elem_size),
              ARR_LOC(L, i, elem_size), elem_size);
       i++;
     } else {
-    
-      memcpy(ARR_LOC(arr, k, elem_size), 
+
+      memcpy(ARR_LOC(arr, k, elem_size),
              ARR_LOC(R, j, elem_size), elem_size);
       j++;
     }
@@ -98,8 +98,8 @@ merge (void *arr, size_t elem_size, size_t low, size_t mid, size_t high,
    * if there are any
    */
   while(i < n1) {
-  
-    memcpy(ARR_LOC(arr, k, elem_size), 
+
+    memcpy(ARR_LOC(arr, k, elem_size),
            ARR_LOC(L, i, elem_size), elem_size);
     i++;
     k++;
@@ -110,8 +110,8 @@ merge (void *arr, size_t elem_size, size_t low, size_t mid, size_t high,
    * if there are any
    */
   while(j < n2) {
-  
-    memcpy(ARR_LOC(arr, k, elem_size), 
+
+    memcpy(ARR_LOC(arr, k, elem_size),
            ARR_LOC(R, j, elem_size), elem_size);
     j++;
     k++;
@@ -132,10 +132,10 @@ merge (void *arr, size_t elem_size, size_t low, size_t mid, size_t high,
 }
 
 /*
- * This is a recursive function that divides the 
+ * This is a recursive function that divides the
  * array into smaller subarrays and then merges them
  * to form the sorted array.
- * 
+ *
  * @param1 arr        The array to be sorted
  * @param2 elem_size  Size of each individual array element
  * @param3 low        Low index of the subarray
@@ -146,9 +146,9 @@ merge (void *arr, size_t elem_size, size_t low, size_t mid, size_t high,
  */
 void
 merge_sort_recur (void *arr, size_t elem_size, size_t low, size_t high,
-                  cmp_e (*cmp)(const void *, const void *))
+                  compare_fn cmp)
 {
-  
+
   size_t mid = 0;
 
   if(!arr) {
@@ -177,7 +177,7 @@ merge_sort_recur (void *arr, size_t elem_size, size_t low, size_t high,
 
 /*
  * Given an array, this function sorts the array based on the compare function
- * passed. If no compare function is provided, it uses memcmp(), to compare 
+ * passed. If no compare function is provided, it uses memcmp(), to compare
  * the elements of the array.
  *
  * @param1 arr        The array to be sorted
@@ -188,8 +188,8 @@ merge_sort_recur (void *arr, size_t elem_size, size_t low, size_t high,
  * @return            void
  */
 void
-msort (void *arr, size_t arr_size,size_t elem_size, 
-            cmp_e (*cmp)(const void *, const void *))
+msort (void *arr, size_t arr_size,size_t elem_size,
+       compare_fn cmp)
 {
 
   if(!arr || !arr_size) {

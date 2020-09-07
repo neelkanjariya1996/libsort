@@ -21,7 +21,7 @@
 #define ARR_LOC(arr, ind, elem_size) (arr + (ind * elem_size))
 
 /*
- * It used the compare function passed by the user. If no compare function 
+ * It used the compare function passed by the user. If no compare function
  * is passed, it uses the standard memcmp() function.
  *
  * @param1 p1         Pointer to element_1
@@ -35,28 +35,28 @@
  */
 static inline cmp_e
 compare (const void *p1, const void *p2, size_t elem_size,
-           cmp_e (*cmp)(const void *, const void *))
+         compare_fn cmp)
 {
 
   cmp_e ret = 0;
 
   if(cmp) {
-  
+
     return (cmp(p1, p2));
   }
 
   ret = memcmp(p1, p2, elem_size);
   if(ret < 0) {
-  
+
     ret =  SORT_LT;
   } else if (ret > 0) {
-  
+
     ret = SORT_GT;
   } else {
-  
+
     ret = SORT_EQ;
   }
-    
+
   return ret;
 }
 
@@ -81,7 +81,7 @@ swap (const void *k1, const void *k2, size_t size)
   p2 = (char *)k2;
 
   do {
-  
+
     tmp = *p1;
     *p1++ = *p2;
     *p2++ = tmp;

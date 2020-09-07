@@ -133,7 +133,7 @@ print_int_array (int *arr, size_t size)
   }
 
   for(i = 0; i < size; i++) {
-  
+
     printf("%d ", arr[i]);
   }
   printf("\n");
@@ -166,7 +166,7 @@ int_cmp_ascending (const void *k1, const void *k2)
   p2 = (int *)k2;
 
   if(*p1 < *p2) {
-    return SORT_LT; 
+    return SORT_LT;
   } else if(*p1 > *p2) {
     return SORT_GT;
   } else {
@@ -183,7 +183,7 @@ int_cmp_descending (const void *k1, const void *k2)
   return ((-1) * int_cmp_ascending(k1, k2));
 }
 
-/* 
+/*
  * Function to print float array
  */
 void
@@ -196,7 +196,7 @@ print_float_array (float *arr, size_t size)
   }
 
   for(i = 0; i < size; i++) {
-  
+
     printf("%.2f ", arr[i]);
   }
   printf("\n");
@@ -227,7 +227,7 @@ float_cmp_ascending (const void *k1, const void *k2)
   p2 = (float *)k2;
 
   if(*p1 < *p2) {
-    return SORT_LT; 
+    return SORT_LT;
   } else if(*p1 > *p2) {
     return SORT_GT;
   } else {
@@ -267,7 +267,7 @@ char_cmp_ascending (const void *k1, const void *k2)
   p2 = (char *)k2;
 
   if(*p1 < *p2) {
-    return SORT_LT; 
+    return SORT_LT;
   } else if(*p1 > *p2) {
     return SORT_GT;
   } else {
@@ -307,7 +307,7 @@ print_points_array (point_t *arr, size_t size)
   }
 
   for(i = 0; i < size; i++) {
-  
+
     printf("(%d, %d) ", arr[i].x, arr[i].y);
   }
   printf("\n");
@@ -316,7 +316,7 @@ print_points_array (point_t *arr, size_t size)
 }
 
 /*
- * compare function to sort points array in 
+ * compare function to sort points array in
  * ascending order based on x coordinate
  */
 cmp_e
@@ -339,7 +339,7 @@ point_x_cmp_ascending (const void *k1, const void *k2)
   p2 = (point_t *) k2;
 
   if(p1->x == p2->x) {
-  
+
     if(p1->y < p2->y) {
       return SORT_LT;
     } else if(p1->y > p2->y) {
@@ -378,7 +378,7 @@ point_y_cmp_ascending (const void *k1, const void *k2)
   p2 = (point_t *) k2;
 
   if(p1->y == p2->y) {
-  
+
     if(p1->x < p2->x) {
       return SORT_LT;
     } else if(p1->x > p2->x) {
