@@ -1346,7 +1346,6 @@ test_cases ()
 
   for(case_no = 0; case_no < NUM_CASES; case_no++) {
 
-    printf("case %d\n", case_no);
     for(type = MSORT; type <= QSORT; type++) {
       if(!(generate_input(&arr, &arr_size, &elem_size,
                      name, name_size, &cmp, case_no))) {
