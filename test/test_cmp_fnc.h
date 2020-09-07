@@ -173,14 +173,10 @@ void
 print_char_array (char *arr)
 {
 
-  size_t len = 0;
-
   if(!arr) {
 
     return;
   }
-
-  len = strlen(arr);
 
   printf("%s ", arr);
   printf("\n");
