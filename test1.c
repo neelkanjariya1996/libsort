@@ -9,8 +9,10 @@
 #include "sort.h"
 #include "test_cmp_fnc.h"
 
-#define NAME_SIZE     255
-#define NUM_CASES     18
+#define NAME_SIZE           255
+#define NUM_CASES           37
+#define ALPHABETS           26
+#define SPECIAL_CHARACTERS  15
 
 #define ARR_SIZE_1    1
 #define ARR_SIZE_2    2
@@ -664,36 +666,268 @@ generate_input (void **arr, size_t *arr_size,
      */
     case char_test_1:
 
+      /*
+       * Test for sorting capital letters in ascending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = (rand() % ALPHABETS) + 'A';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting capital leters"
+                    " in ascending order", name_size);
+      cmp = char_cmp_ascending;
     break;
     case char_test_2:
 
+      /*
+       * Test for sorting capital letters in descending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = (rand() % ALPHABETS) + 'A';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting capital leters"
+                    " in descending order", name_size);
+      cmp = char_cmp_descending;
     break;
     case char_test_3:
 
+      /*
+       * Test for sorting small letters in ascending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = (rand() % ALPHABETS) + 'a';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting small leters"
+                    " in ascending order", name_size);
+      cmp = char_cmp_ascending;
     break;
     case char_test_4:
 
+      /*
+       * Test for sorting small letters in descending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = (rand() % ALPHABETS) + 'a';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting small leters"
+                    " in descending order", name_size);
+      cmp = char_cmp_descending;
     break;
     case char_test_5:
 
+      /*
+       * Test for sorting characters in ascending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = (rand() % CHAR_MAX);
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting characters"
+                    " in ascending order", name_size);
+      cmp = char_cmp_ascending;
     break;
     case char_test_6:
 
+      /*
+       * Test for sorting characters in descending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = (rand() % CHAR_MAX);
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting characters"
+                    " in descending order", name_size);
+      cmp = char_cmp_descending;
     break;
     case char_test_7:
 
+      /*
+       * Test for sorting special characters in ascending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = (rand() % SPECIAL_CHARACTERS) + ' ';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting special characters"
+                    " in ascending order", name_size);
+      cmp = char_cmp_ascending;
     break;
     case char_test_8:
 
+      /*
+       * Test for sorting special characters in descending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = (rand() % SPECIAL_CHARACTERS) + ' ';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting special characters"
+                    " in descending order", name_size);
+      cmp = char_cmp_descending;
     break;
     case char_test_9:
 
+      /*
+       * Test for sorting char array of size 1 in descending order
+      */
+      char_a = malloc(ARR_SIZE_1 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_1; i++) {
+      
+        char_a[i] = (rand() % SPECIAL_CHARACTERS) + ' ';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting char array of size"
+                    " 1 in descending order", name_size);
+      cmp = char_cmp_descending;
     break;
     case char_test_10:
 
+      /*
+       * Test for sorting char array of size 2 in ascending order
+      */
+      char_a = malloc(ARR_SIZE_2 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_2; i++) {
+      
+        char_a[i] = (rand() % SPECIAL_CHARACTERS) + ' ';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting char array of size"
+                    " 2 in ascending order", name_size);
+      cmp = char_cmp_ascending;
     break;
     case char_test_11:
 
+      /*
+       * Test for sorting char array with all characters
+       * same in descending order
+      */
+      char_a = malloc(ARR_SIZE_10 * sizeof(char));
+      if(!char_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        char_a[i] = 'a';
+      }
+
+      *arr = char_a;
+      *arr_size = sizeof(char_a) / sizeof(char);
+      *elem_size = sizeof(char);
+      strncpy(name, "Test for sorting char array with all characters"
+                    " same in descending order", name_size);
+      cmp = char_cmp_descending;
     break;
 
     /*
@@ -701,27 +935,299 @@ generate_input (void **arr, size_t *arr_size,
      */
     case point_t_test_1:
 
+      /*
+       * Test for sorting points array in
+       * ascending order based on x coordinate
+      */
+      point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
+      if(!point_t_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        point_t_a[i].x = rand() % INT_MAX;
+        if(point_t_a[i].x < 0) {
+        
+          point_t_a[i].x *= (-1);
+        }
+        point_t_a[i].y = rand() % INT_MAX;
+        if(point_t_a[i].y < 0) {
+        
+          point_t_a[i].y *= (-1);
+        }
+      }
+
+      *arr = point_t_a;
+      *arr_size = sizeof(point_t_a) / sizeof(point_t);
+      *elem_size = sizeof(point_t);
+      strncpy(name, "Test for sorting points array in ascending"
+                    " order based on x coordinate", name_size);
+      cmp = point_x_cmp_ascending;
     break;
     case point_t_test_2:
 
+      /*
+       * Test for sorting points array in
+       * ascending order based on y coordinate
+      */
+      point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
+      if(!point_t_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        point_t_a[i].x = rand() % INT_MAX;
+        if(point_t_a[i].x < 0) {
+        
+          point_t_a[i].x *= (-1);
+        }
+        point_t_a[i].y = rand() % INT_MAX;
+        if(point_t_a[i].y < 0) {
+        
+          point_t_a[i].y *= (-1);
+        }
+      }
+
+      *arr = point_t_a;
+      *arr_size = sizeof(point_t_a) / sizeof(point_t);
+      *elem_size = sizeof(point_t);
+      strncpy(name, "Test for sorting points array in ascending"
+                    " order based on y coordinate", name_size);
+      cmp = point_y_cmp_ascending;
     break;
     case point_t_test_3:
 
+      /*
+       * Test for sorting points array in
+       * descending order based on x coordinate
+      */
+      point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
+      if(!point_t_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        point_t_a[i].x = rand() % INT_MAX;
+        if(point_t_a[i].x < 0) {
+        
+          point_t_a[i].x *= (-1);
+        }
+        point_t_a[i].y = rand() % INT_MAX;
+        if(point_t_a[i].y < 0) {
+        
+          point_t_a[i].y *= (-1);
+        }
+      }
+
+      *arr = point_t_a;
+      *arr_size = sizeof(point_t_a) / sizeof(point_t);
+      *elem_size = sizeof(point_t);
+      strncpy(name, "Test for sorting points array in descending"
+                    " order based on x coordinate", name_size);
+      cmp = point_x_cmp_descending;
     break;
     case point_t_test_4:
 
+      /*
+       * Test for sorting points array in
+       * descending order based on y coordinate
+      */
+      point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
+      if(!point_t_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        point_t_a[i].x = rand() % INT_MAX;
+        if(point_t_a[i].x < 0) {
+        
+          point_t_a[i].x *= (-1);
+        }
+        point_t_a[i].y = rand() % INT_MAX;
+        if(point_t_a[i].y < 0) {
+        
+          point_t_a[i].y *= (-1);
+        }
+      }
+
+      *arr = point_t_a;
+      *arr_size = sizeof(point_t_a) / sizeof(point_t);
+      *elem_size = sizeof(point_t);
+      strncpy(name, "Test for sorting points array in descending"
+                    " order based on y coordinate", name_size);
+      cmp = point_y_cmp_descending;
     break;
     case point_t_test_5:
 
+      /*
+       * Test for sorting points array in
+       * ascending order based on x coordinate
+      */
+      point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
+      if(!point_t_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        point_t_a[i].x = rand() % INT_MAX;
+        if(((i % 2) == 0) && (point_t_a[i].x < 0)) {
+        
+          point_t_a[i].x *= (-1);
+        } else if(((i % 2) == 1) && (point_t_a[i].x > 0)){
+        
+          point_t_a[i].x *= (-1);
+        }
+        point_t_a[i].y = rand() % INT_MAX;
+        if(((i % 2) == 0) && (point_t_a[i].y < 0)) {
+
+          point_t_a[i].y *= (-1);
+        } else if(((i % 2) == 1) && (point_t_a[i].y > 0)){
+        
+          point_t_a[i].y *= (-1);
+        }
+      }
+
+      *arr = point_t_a;
+      *arr_size = sizeof(point_t_a) / sizeof(point_t);
+      *elem_size = sizeof(point_t);
+      strncpy(name, "Test for sorting points array in ascending"
+                    " order based on x coordinate", name_size);
+      cmp = point_x_cmp_ascending;
     break;
     case point_t_test_6:
 
+      /*
+       * Test for sorting points array in
+       * ascending order based on y coordinate
+      */
+      point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
+      if(!point_t_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        point_t_a[i].x = rand() % INT_MAX;
+        if(((i % 2) == 0) && (point_t_a[i].x < 0)) {
+        
+          point_t_a[i].x *= (-1);
+        } else if(((i % 2) == 1) && (point_t_a[i].x > 0)){
+        
+          point_t_a[i].x *= (-1);
+        }
+        point_t_a[i].y = rand() % INT_MAX;
+        if(((i % 2) == 0) && (point_t_a[i].y < 0)) {
+
+          point_t_a[i].y *= (-1);
+        } else if(((i % 2) == 1) && (point_t_a[i].y > 0)){
+        
+          point_t_a[i].y *= (-1);
+        }
+      }
+
+      *arr = point_t_a;
+      *arr_size = sizeof(point_t_a) / sizeof(point_t);
+      *elem_size = sizeof(point_t);
+      strncpy(name, "Test for sorting points array in ascending"
+                    " order based on y coordinate", name_size);
+      cmp = point_y_cmp_ascending;
     break;
     case point_t_test_7:
 
+      /*
+       * Test for sorting points array in
+       * descending order based on x coordinate
+      */
+      point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
+      if(!point_t_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        point_t_a[i].x = rand() % INT_MAX;
+        if(((i % 2) == 0) && (point_t_a[i].x < 0)) {
+        
+          point_t_a[i].x *= (-1);
+        } else if(((i % 2) == 1) && (point_t_a[i].x > 0)){
+        
+          point_t_a[i].x *= (-1);
+        }
+        point_t_a[i].y = rand() % INT_MAX;
+        if(((i % 2) == 0) && (point_t_a[i].y < 0)) {
+
+          point_t_a[i].y *= (-1);
+        } else if(((i % 2) == 1) && (point_t_a[i].y > 0)){
+        
+          point_t_a[i].y *= (-1);
+        }
+      }
+
+      *arr = point_t_a;
+      *arr_size = sizeof(point_t_a) / sizeof(point_t);
+      *elem_size = sizeof(point_t);
+      strncpy(name, "Test for sorting points array in descending"
+                    " order based on x coordinate", name_size);
+      cmp = point_x_cmp_descending;
     break;
     case point_t_test_8:
 
+      /*
+       * Test for sorting points array in
+       * descending order based on y coordinate
+      */
+      point_t_a = malloc(ARR_SIZE_10 * sizeof(point_t));
+      if(!point_t_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        point_t_a[i].x = rand() % INT_MAX;
+        if(((i % 2) == 0) && (point_t_a[i].x < 0)) {
+        
+          point_t_a[i].x *= (-1);
+        } else if(((i % 2) == 1) && (point_t_a[i].x > 0)){
+        
+          point_t_a[i].x *= (-1);
+        }
+        point_t_a[i].y = rand() % INT_MAX;
+        if(((i % 2) == 0) && (point_t_a[i].y < 0)) {
+
+          point_t_a[i].y *= (-1);
+        } else if(((i % 2) == 1) && (point_t_a[i].y > 0)){
+        
+          point_t_a[i].y *= (-1);
+        }
+      }
+
+      *arr = point_t_a;
+      *arr_size = sizeof(point_t_a) / sizeof(point_t);
+      *elem_size = sizeof(point_t);
+      strncpy(name, "Test for sorting points array in descending"
+                    " order based on y coordinate", name_size);
+      cmp = point_y_cmp_descending;
     break;
 
     /*
@@ -773,7 +1279,7 @@ test_cases ()
   name_size = NAME_SIZE;
   name = malloc(name_size * sizeof(char));
 
-  for(case_no = 9; case_no < NUM_CASES; case_no++) {
+  for(case_no = 29; case_no < NUM_CASES; case_no++) {
   
     for(type = MSORT; type <= QSORT; type++) {
       
