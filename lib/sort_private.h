@@ -1,8 +1,24 @@
+/*
+ * File name: sort_private.h
+ * Author: Neel Kanjaria
+ * Description: private header file needed for sorting library
+ * NOT TO BE USED BY USER DIRECTLY
+ */
 #ifndef __SORT_PRIVATE_H__
-
 #define __SORT_PRIVATE_H__
 
 #include "sort.h"
+
+/*
+ * macro to access a void* array for a given element size
+ *
+ * @param1 arr        The pointer to the array
+ * @param2 ind        The index you want to change/use
+ * @param3 elem_size  Size of each individual array element
+ *
+ * @return            Returns the array location of the index
+ */
+#define ARR_LOC(arr, ind, elem_size) (arr + (ind * elem_size))
 
 /*
  * It used the compare function passed by the user. If no compare function 
@@ -42,6 +58,34 @@ compare (const void *p1, const void *p2, size_t elem_size,
   }
     
   return ret;
+}
+
+/*
+ * Function to swap two elements byte by bte of size SIZE
+ *
+ * @param1 k1   pointer to element_1
+ * @param2 k2   pointer to element_2
+ * @param3 size size of the individual array element
+ *
+ * @return      void
+ */
+static inline void
+swap (const void *k1, const void *k2, size_t size)
+{
+
+  char *p1 = NULL;
+  char *p2 = NULL;
+  char tmp;
+
+  p1 = (char *)k1;
+  p2 = (char *)k2;
+
+  do {
+  
+    tmp = *p1;
+    *p1++ = *p2;
+    *p2++ = tmp;
+  } while((--size) > 0);
 }
 
 #endif

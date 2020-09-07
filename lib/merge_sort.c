@@ -1,3 +1,8 @@
+/*
+ * File name: merge_sort.c
+ * Author: Neel Kanjaria
+ * Description: Code for merge sort
+ */
 #include "sort.h"
 #include "sort_private.h"
 

@@ -1,37 +1,14 @@
+/*
+ * File name: heap_sort.c
+ * Author: Neel Kanjaria
+ * Description: Code for heap sort
+ */
 #include "sort.h"
 #include "sort_private.h"
 
 #define PARENT(ind)   ((ind - 1) / 2)     //Macro to get the parent's index
 #define LEFT(ind)     ((2 * ind) + 1)     //Macro to get the left child's index
 #define RIGHT(ind)    ((2 * ind) + 2)     //Macro to get the right child's index
-
-/*
- * Function to swap two array elements byte by bte of size SIZE
- *
- * @param1 k1   pointer to element_1
- * @param2 k2   pointer to element_2
- * @param3 size size of the individual array element
- *
- * @return      void
- */
-void
-swap (const void *k1, const void *k2, size_t size)
-{
-
-  char *p1 = NULL;
-  char *p2 = NULL;
-  char tmp;
-
-  p1 = (char *)k1;
-  p2 = (char *)k2;
-
-  do {
-  
-    tmp = *p1;
-    *p1++ = *p2;
-    *p2++ = tmp;
-  } while((--size) > 0);
-}
 
 /*
  * This function is used to heapify the subtree rooted at node ind which
@@ -58,7 +35,6 @@ heapify (void *arr, size_t arr_size,
   cmp_e ret = 0;
 
   if(!arr) {
-  
     return;
   }
   
@@ -70,8 +46,8 @@ heapify (void *arr, size_t arr_size,
    * If left child is larger than root, consider to make it as root
    */
   ret = compare((void *)ARR_LOC(arr, l, elem_size), 
-                 (void *)ARR_LOC(arr, largest, elem_size),
-                  elem_size, cmp);
+                (void *)ARR_LOC(arr, largest, elem_size),
+                 elem_size, cmp);
   if((l < arr_size) && (ret == SORT_GT)) {
   
     largest = l;
@@ -81,8 +57,8 @@ heapify (void *arr, size_t arr_size,
    * If right child is larger than largest so far, make it root
    */
   ret = compare((void *)ARR_LOC(arr, r, elem_size), 
-                 (void *)ARR_LOC(arr, largest, elem_size),
-                  elem_size, cmp);
+                (void *)ARR_LOC(arr, largest, elem_size),
+                 elem_size, cmp);
   if((r < arr_size) && (ret == SORT_GT)) {
   
     largest = r;
@@ -119,7 +95,7 @@ heapify (void *arr, size_t arr_size,
  */
 void
 hsort (void *arr, size_t arr_size, size_t elem_size,
-           cmp_e (*cmp)(const void *, const void *))
+       cmp_e (*cmp)(const void *, const void *))
 {
 
   long i = 0;

@@ -1,3 +1,11 @@
+/*
+ * File name: test_private.h
+ * Author: Neel Kanjaria
+ * Description: Header file for unit test framework
+ * Defines various macros, utility functions and structures
+ * needed in test.c
+ */
+
 #ifndef __TEST_CMP_FNC_H__
 
 #define __TEST_CMP_FNC_H__
@@ -28,17 +36,99 @@
 #define _512MB              512000000
 #define _1GB                1000000000
 
-/* 
+#define ARR_LOC(arr, ind, elem_size) (arr + (ind * elem_size))
+
+/*
+ * Enum to represent the sort types
+ */
+typedef enum sort_type_e_ {
+
+  MSORT = 0,
+  HSORT,
+  QSORT,
+} sort_type_e;
+
+/*
+ * Enum to represent all test cases
+ */
+typedef enum test_cases_e_ {
+
+  INT_TEST_1 = 0,
+  INT_TEST_2,
+  INT_TEST_3,
+  INT_TEST_4,
+  INT_TEST_5,
+  INT_TEST_6,
+  INT_TEST_7,
+  INT_TEST_8,
+  INT_TEST_9,
+  FLOAT_TEST_1,
+  FLOAT_TEST_2,
+  FLOAT_TEST_3,
+  FLOAT_TEST_4,
+  FLOAT_TEST_5,
+  FLOAT_TEST_6,
+  FLOAT_TEST_7,
+  FLOAT_TEST_8,
+  FLOAT_TEST_9,
+  CHAR_TEST_1,
+  CHAR_TEST_2,
+  CHAR_TEST_3,
+  CHAR_TEST_4,
+  CHAR_TEST_5,
+  CHAR_TEST_6,
+  CHAR_TEST_7,
+  CHAR_TEST_8,
+  CHAR_TEST_9,
+  CHAR_TEST_10,
+  CHAR_TEST_11,
+  POINT_T_TEST_1,
+  POINT_T_TEST_2,
+  POINT_T_TEST_3,
+  POINT_T_TEST_4,
+  POINT_T_TEST_5,
+  POINT_T_TEST_6,
+  POINT_T_TEST_7,
+  POINT_T_TEST_8,
+  TEST_1,
+  TEST_2,
+  TEST_3,
+  TEST_4,
+  TEST_5,
+  TEST_6,
+  TEST_7,
+  TEST_8,
+} test_cases_e;
+
+/*
+ * Util function to get the name of the sorting method used
+ */
+static inline const char *
+sort_type2str (sort_type_e type)
+{
+  switch (type) {
+    case MSORT:
+      return ("merge-sort");
+    case HSORT:
+      return ("heap-sort");
+    case QSORT:
+      return ("quick-sort");
+    default:
+      break;
+  }
+
+  return ("n/a");
+}
+
+/*
  * Function to print integer array
  */
 void
 print_int_array (int *arr, size_t size)
 {
-
   size_t i = 0;
 
   if(!arr) {
-
     return;
   }
 
@@ -57,7 +147,6 @@ print_int_array (int *arr, size_t size)
 cmp_e
 int_cmp_ascending (const void *k1, const void *k2)
 {
-
   int *p1 = NULL;
   int *p2 = NULL;
 
@@ -91,7 +180,6 @@ int_cmp_ascending (const void *k1, const void *k2)
 cmp_e
 int_cmp_descending (const void *k1, const void *k2)
 {
-
   return ((-1) * int_cmp_ascending(k1, k2));
 }
 
@@ -101,11 +189,9 @@ int_cmp_descending (const void *k1, const void *k2)
 void
 print_float_array (float *arr, size_t size)
 {
-
   size_t i = 0;
 
   if(!arr) {
-
     return;
   }
 
@@ -124,20 +210,16 @@ print_float_array (float *arr, size_t size)
 cmp_e
 float_cmp_ascending (const void *k1, const void *k2)
 {
-
   float *p1 = NULL;
   float *p2 = NULL;
 
   if(!k1 && !k2) {
-  
     return SORT_EQ;
   }
   if(!k1) {
-  
     return SORT_LT;
   }
   if(!k2) {
-  
     return SORT_GT;
   }
 
@@ -145,13 +227,10 @@ float_cmp_ascending (const void *k1, const void *k2)
   p2 = (float *)k2;
 
   if(*p1 < *p2) {
-  
     return SORT_LT; 
   } else if(*p1 > *p2) {
-  
     return SORT_GT;
   } else {
-  
     return SORT_EQ;
   }
 }
@@ -162,26 +241,7 @@ float_cmp_ascending (const void *k1, const void *k2)
 cmp_e
 float_cmp_descending (const void *k1, const void *k2)
 {
-
   return ((-1) * float_cmp_ascending(k1, k2));
-}
-
-/*
- * Function to print character array
- */
-void
-print_char_array (char *arr)
-{
-
-  if(!arr) {
-
-    return;
-  }
-
-  printf("%s ", arr);
-  printf("\n");
-
-  return;
 }
 
 /*
@@ -190,20 +250,16 @@ print_char_array (char *arr)
 cmp_e
 char_cmp_ascending (const void *k1, const void *k2)
 {
-
   char *p1 = NULL;
   char *p2 = NULL;
 
   if(!k1 && !k2) {
-  
     return SORT_EQ;
   }
   if(!k1) {
-  
     return SORT_LT;
   }
   if(!k2) {
-  
     return SORT_GT;
   }
 
@@ -211,13 +267,10 @@ char_cmp_ascending (const void *k1, const void *k2)
   p2 = (char *)k2;
 
   if(*p1 < *p2) {
-  
     return SORT_LT; 
   } else if(*p1 > *p2) {
-  
     return SORT_GT;
   } else {
-  
     return SORT_EQ;
   }
 }
@@ -247,11 +300,9 @@ typedef struct point_t_ {
 void
 print_points_array (point_t *arr, size_t size)
 {
-
   size_t i = 0;
 
   if(!arr) {
-
     return;
   }
 
@@ -271,20 +322,16 @@ print_points_array (point_t *arr, size_t size)
 cmp_e
 point_x_cmp_ascending (const void *k1, const void *k2)
 {
-
   point_t *p1 = NULL;
   point_t *p2 = NULL;
 
   if(!k1 && !k2) {
-  
     return SORT_EQ;
   }
   if(!k1) {
-  
     return SORT_LT;
   }
   if(!k2) {
-  
     return SORT_GT;
   }
 
@@ -294,20 +341,15 @@ point_x_cmp_ascending (const void *k1, const void *k2)
   if(p1->x == p2->x) {
   
     if(p1->y < p2->y) {
-    
       return SORT_LT;
     } else if(p1->y > p2->y) {
-    
       return SORT_GT;
     } else {
-    
       return SORT_EQ;
     }
   } else if(p1->x < p2->x) {
-  
     return SORT_LT;
   } else {
-  
     return SORT_GT;
   }
 }
@@ -319,20 +361,16 @@ point_x_cmp_ascending (const void *k1, const void *k2)
 cmp_e
 point_y_cmp_ascending (const void *k1, const void *k2)
 {
-
   point_t *p1 = NULL;
   point_t *p2 = NULL;
 
   if(!k1 && !k2) {
-  
     return SORT_EQ;
   }
   if(!k1) {
-  
     return SORT_LT;
   }
   if(!k2) {
-  
     return SORT_GT;
   }
 
@@ -342,20 +380,15 @@ point_y_cmp_ascending (const void *k1, const void *k2)
   if(p1->y == p2->y) {
   
     if(p1->x < p2->x) {
-    
       return SORT_LT;
     } else if(p1->x > p2->x) {
-    
       return SORT_GT;
     } else {
-    
       return SORT_EQ;
     }
   } else if(p1->y < p2->y) {
-  
     return SORT_LT;
   } else {
-  
     return SORT_GT;
   }
 }
@@ -367,7 +400,6 @@ point_y_cmp_ascending (const void *k1, const void *k2)
 cmp_e
 point_x_cmp_descending (const void *k1, const void *k2)
 {
-
   return ((-1) * point_x_cmp_ascending(k1, k2));
 }
 
@@ -378,7 +410,6 @@ point_x_cmp_descending (const void *k1, const void *k2)
 cmp_e
 point_y_cmp_descending (const void *k1, const void *k2)
 {
-
   return ((-1) * point_y_cmp_ascending(k1, k2));
 }
 
