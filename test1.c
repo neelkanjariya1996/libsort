@@ -10,7 +10,7 @@
 #include "test_cmp_fnc.h"
 
 #define NAME_SIZE           255
-#define NUM_CASES           37
+#define NUM_CASES           45
 #define ALPHABETS           26
 #define SPECIAL_CHARACTERS  15
 
@@ -1235,27 +1235,175 @@ generate_input (void **arr, size_t *arr_size,
      */
     case test_1:
 
+      /*
+       * Array passed as NULL
+       */
+      *arr = NULL;
+      *arr_size = sizeof(int_a) / sizeof(int);
+      *elem_size = sizeof(int);
+      strncpy(name, "Test for empty array", name_size);
+      cmp = int_cmp_ascending;
     break;
     case test_2:
 
+      /*
+       * Compare function passed as NULL
+       */
+      int_a = malloc(ARR_SIZE_10 * sizeof(int));
+      if(!int_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < ARR_SIZE_10; i++) {
+      
+        int_a[i] = (rand() % INT_MAX);
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(int_a) / sizeof(int);
+      *elem_size = sizeof(int);
+      strncpy(name, "Test for compare function passed as NULL", name_size);
+      cmp = NULL;
     break;
     case test_3:
 
+      /*
+       * Test for 1KB of integer array
+       */
+      int_a = malloc((_1KB / sizeof(int)) * sizeof(int));
+      if(!int_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < (_1KB / sizeof(int)); i++) {
+      
+        int_a[i] = (rand() % INT_MAX);
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(int_a) / sizeof(int);
+      *elem_size = sizeof(int);
+      strncpy(name, "Test for 1KB of integer array", name_size);
+      cmp = int_cmp_ascending;
     break;
     case test_4:
 
+      /*
+       * Test for 1KB of float array
+       */
+      float_a = malloc((_1KB / sizeof(float)) * sizeof(float));
+      if(!int_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < (_1KB / sizeof(float)); i++) {
+      
+        int_a[i] = ((float)rand() / (float)(RAND_MAX / rand()));
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(float_a) / sizeof(float);
+      *elem_size = sizeof(float);
+      strncpy(name, "Test for 1KB of float array", name_size);
+      cmp = float_cmp_ascending;
     break;
     case test_5:
 
+      /*
+       * Test for 1MB of integer array
+       */
+      int_a = malloc((_1MB / sizeof(int)) * sizeof(int));
+      if(!int_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < (_1MB / sizeof(int)); i++) {
+      
+        int_a[i] = (rand() % INT_MAX);
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(int_a) / sizeof(int);
+      *elem_size = sizeof(int);
+      strncpy(name, "Test for 1MB of integer array", name_size);
+      cmp = int_cmp_ascending;
     break;
     case test_6:
 
+      /*
+       * Test for 1MB of float array
+       */
+      float_a = malloc((_1MB / sizeof(float)) * sizeof(float));
+      if(!int_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < (_1MB / sizeof(float)); i++) {
+      
+        int_a[i] = ((float)rand() / (float)(RAND_MAX / rand()));
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(float_a) / sizeof(float);
+      *elem_size = sizeof(float);
+      strncpy(name, "Test for 1MB of float array", name_size);
+      cmp = float_cmp_ascending;
     break;
     case test_7:
 
+      /*
+       * Test for 128MB of integer array
+       */
+      int_a = malloc((_1MB / sizeof(int)) * sizeof(int));
+      if(!int_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < (_128MB / sizeof(int)); i++) {
+      
+        int_a[i] = (rand() % INT_MAX);
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(int_a) / sizeof(int);
+      *elem_size = sizeof(int);
+      strncpy(name, "Test for 128MB of integer array", name_size);
+      cmp = int_cmp_ascending;
     break;
     case test_8:
 
+      /*
+       * Test for 1MB of float array
+       */
+      float_a = malloc((_128MB / sizeof(float)) * sizeof(float));
+      if(!int_a) {
+      
+        printf("Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < (_128MB / sizeof(float)); i++) {
+      
+        int_a[i] = ((float)rand() / (float)(RAND_MAX / rand()));
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(float_a) / sizeof(float);
+      *elem_size = sizeof(float);
+      strncpy(name, "Test for 128MB of float array", name_size);
+      cmp = float_cmp_ascending;
     break;
   }
 }

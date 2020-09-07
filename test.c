@@ -1347,8 +1347,6 @@ test_5 (sort_type_e type)
 
   sort(arr, size, sizeof(int), int_cmp_ascending, type);
 
-  print_int_array(arr, size);
-
   ret = is_array_sorted(arr, size, sizeof(int), int_cmp_ascending);
 
   if(arr) {
@@ -1821,7 +1819,7 @@ test_for_arr (sort_type_e type)
   
     printf("%s\n", "FAILURE");
   }
-/*
+
   if(test_2(type)) {
   
     printf("%s\n", "SUCCESS");
@@ -1829,7 +1827,7 @@ test_for_arr (sort_type_e type)
   
     printf("%s\n", "FAILURE");
   }
-*/
+
   if(test_3(type)) {
   
     printf("%s\n", "SUCCESS");
@@ -1845,7 +1843,7 @@ test_for_arr (sort_type_e type)
   
     printf("%s\n", "FAILURE");
   }
-/*
+
   if(test_5(type)) {
   
     printf("%s\n", "SUCCESS");
@@ -1877,7 +1875,7 @@ test_for_arr (sort_type_e type)
   
     printf("%s\n", "FAILURE");
   }
-*/
+
 }
 
 void
@@ -1891,10 +1889,10 @@ test_cases ()
   
   for(i = MSORT; i <= QSORT; i++) {
   
-    test_for_int_arr(i);
-    test_for_float_arr(i);
-    test_for_char_arr(i);
-    test_for_points_arr(i);
+    //test_for_int_arr(i);
+    //test_for_float_arr(i);
+    //test_for_char_arr(i);
+    //test_for_points_arr(i);
     test_for_arr(i);
     printf("\n\n");
   }
