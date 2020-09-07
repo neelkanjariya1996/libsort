@@ -5,6 +5,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
+#include <time.h>
+#include <stdbool.h>
+#include <stdint.h>
+
+#include "../lib/sort.h"
+
+#define NAME_SIZE           255
+#define NUM_CASES           45
+#define ALPHABETS           26
+#define SPECIAL_CHARACTERS  15
+
+#define ARR_SIZE_1          1
+#define ARR_SIZE_2          2
+#define ARR_SIZE_10         10
+
+#define _1KB                1000
+#define _1MB                1000000
+#define _128MB              128000000
+#define _256MB              256000000
+#define _512MB              512000000
+#define _1GB                1000000000
 
 /* 
  * Function to print integer array

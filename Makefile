@@ -1,4 +1,4 @@
 make:
-	gcc merge_sort.c heap_sort.c test1.c -o output
+	gcc ./lib/merge_sort.c ./lib/heap_sort.c ./test/test.c -o output
 clean:
 	rm -rf output

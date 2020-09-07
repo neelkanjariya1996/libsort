@@ -1,26 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-#include <time.h>
-#include <stdbool.h>
-#include <stdint.h>
-
-#include "sort.h"
 #include "test_cmp_fnc.h"
-
-#define NAME_SIZE           255
-#define NUM_CASES           45
-#define ALPHABETS           26
-#define SPECIAL_CHARACTERS  15
-
-#define ARR_SIZE_1    1
-#define ARR_SIZE_2    2
-#define ARR_SIZE_10   10
-
-#define _1KB      1000
-#define _1MB      1000000
-#define _128MB    128000000
 
 typedef enum sort_type_e_ {
 
@@ -1252,7 +1230,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc(ARR_SIZE_10 * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("test_2: Malloc Failure\n");
         return;
       }
 
@@ -1275,7 +1253,7 @@ generate_input (void **arr, size_t *arr_size,
       int_a = malloc((_1KB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("test_3: Malloc Failure\n");
         return;
       }
 
@@ -1293,35 +1271,12 @@ generate_input (void **arr, size_t *arr_size,
     case test_4:
 
       /*
-       * Test for 1KB of float array
-       */
-      float_a = malloc((_1KB / sizeof(float)) * sizeof(float));
-      if(!int_a) {
-      
-        printf("Malloc Failure\n");
-        return;
-      }
-
-      for(i = 0; i < (_1KB / sizeof(float)); i++) {
-      
-        int_a[i] = ((float)rand() / (float)(RAND_MAX / rand()));
-      }
-
-      *arr = int_a;
-      *arr_size = sizeof(float_a) / sizeof(float);
-      *elem_size = sizeof(float);
-      strncpy(name, "Test for 1KB of float array", name_size);
-      cmp = float_cmp_ascending;
-    break;
-    case test_5:
-
-      /*
        * Test for 1MB of integer array
        */
       int_a = malloc((_1MB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("tes_4: Malloc Failure\n");
         return;
       }
 
@@ -1336,38 +1291,15 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for 1MB of integer array", name_size);
       cmp = int_cmp_ascending;
     break;
-    case test_6:
-
-      /*
-       * Test for 1MB of float array
-       */
-      float_a = malloc((_1MB / sizeof(float)) * sizeof(float));
-      if(!int_a) {
-      
-        printf("Malloc Failure\n");
-        return;
-      }
-
-      for(i = 0; i < (_1MB / sizeof(float)); i++) {
-      
-        int_a[i] = ((float)rand() / (float)(RAND_MAX / rand()));
-      }
-
-      *arr = int_a;
-      *arr_size = sizeof(float_a) / sizeof(float);
-      *elem_size = sizeof(float);
-      strncpy(name, "Test for 1MB of float array", name_size);
-      cmp = float_cmp_ascending;
-    break;
-    case test_7:
+    case test_5:
 
       /*
        * Test for 128MB of integer array
        */
-      int_a = malloc((_1MB / sizeof(int)) * sizeof(int));
+      int_a = malloc((_128MB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("test_5: Malloc Failure\n");
         return;
       }
 
@@ -1382,30 +1314,80 @@ generate_input (void **arr, size_t *arr_size,
       strncpy(name, "Test for 128MB of integer array", name_size);
       cmp = int_cmp_ascending;
     break;
-    case test_8:
+    case test_6:
 
       /*
-       * Test for 1MB of float array
+       * Test for 256MB of integer array
        */
-      float_a = malloc((_128MB / sizeof(float)) * sizeof(float));
+      int_a = malloc((_256MB / sizeof(int)) * sizeof(int));
       if(!int_a) {
       
-        printf("Malloc Failure\n");
+        printf("test_6: Malloc Failure\n");
         return;
       }
 
-      for(i = 0; i < (_128MB / sizeof(float)); i++) {
+      for(i = 0; i < (_256MB / sizeof(int)); i++) {
       
-        int_a[i] = ((float)rand() / (float)(RAND_MAX / rand()));
+        int_a[i] = (rand() % INT_MAX);
       }
 
       *arr = int_a;
-      *arr_size = sizeof(float_a) / sizeof(float);
-      *elem_size = sizeof(float);
-      strncpy(name, "Test for 128MB of float array", name_size);
-      cmp = float_cmp_ascending;
+      *arr_size = sizeof(int_a) / sizeof(int);
+      *elem_size = sizeof(int);
+      strncpy(name, "Test for 256MB of integer array", name_size);
+      cmp = int_cmp_ascending;
+    break;
+    case test_7:
+
+      /*
+       * Test for 512MB of integer array
+       */
+      int_a = malloc((_512MB / sizeof(int)) * sizeof(int));
+      if(!int_a) {
+      
+        printf("test_7: Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < (_512MB / sizeof(int)); i++) {
+      
+        int_a[i] = (rand() % INT_MAX);
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(int_a) / sizeof(int);
+      *elem_size = sizeof(int);
+      strncpy(name, "Test for 512MB of integer array", name_size);
+      cmp = int_cmp_ascending;
+    break;
+    case test_8:
+
+      /*
+       * Test for 1GB of integer array
+       */
+      int_a = malloc((_1GB / sizeof(int)) * sizeof(int));
+      if(!int_a) {
+      
+        printf("test_8: Malloc Failure\n");
+        return;
+      }
+
+      for(i = 0; i < (_1GB / sizeof(int)); i++) {
+      
+        int_a[i] = (rand() % INT_MAX);
+      }
+
+      *arr = int_a;
+      *arr_size = sizeof(int_a) / sizeof(int);
+      *elem_size = sizeof(int);
+      strncpy(name, "Test for 1GB of integer array", name_size);
+      cmp = int_cmp_ascending;
+    break;
+    default:
     break;
   }
+
+  return;
 }
 
 void
@@ -1421,32 +1403,48 @@ test_cases ()
   test_cases_e case_no = 0;
   sort_type_e type = 0;
   bool is_sorted = false;
+  clock_t begin = 0;
+  clock_t end = 0;
+  double time_spent = 0;
 
   srand(time(0));
 
   name_size = NAME_SIZE;
   name = malloc(name_size * sizeof(char));
 
-  for(case_no = 29; case_no < NUM_CASES; case_no++) {
+  for(case_no = 0; case_no < NUM_CASES; case_no++) {
   
     for(type = MSORT; type <= QSORT; type++) {
       
-      generate_input(&arr, &arr_size, &elem_size, name, name_size, cmp, case_no);
+      generate_input(&arr, &arr_size, &elem_size, 
+                     name, name_size, cmp, case_no);
+
+      /*
+       * Quick sort doesn't take NULL as parameters
+       */
+      if(type == QSORT && (!arr || !cmp)) {
+        continue;
+      }
+
+      begin = clock();
 
       sort(arr, arr_size, elem_size, cmp, type);
+  
+      end = clock();
+      time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 
       is_sorted = is_array_sorted(arr, arr_size, elem_size, cmp);
-
       if(is_sorted) {
       
-        printf("%s: %s -> %s\n", sort_type2str(type), name, "SUCCESS");
+        printf("%-12s %-75s %-10s execution time: %lf\n",
+              sort_type2str(type), name, "SUCCESS", time_spent);
       } else {
       
-        printf("%s: %s -> %s\n", sort_type2str(type), name, "FAILURE");
+        printf("%s %-75s %-10s execution time: %lf\n",
+              sort_type2str(type), name, "FAILURE", time_spent);
       }
 
       if(arr) {
-      
         free(arr);
       }
     }
